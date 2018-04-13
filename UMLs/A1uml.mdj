@@ -933,7 +933,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_name: String",
+											"text": "-_name: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4713,7 +4713,7 @@
 								"$ref": "AAAAAAFivwspZmJWp2k="
 							},
 							"name": "_name",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "String",
