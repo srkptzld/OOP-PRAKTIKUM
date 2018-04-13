@@ -14,7 +14,7 @@ import java.util.Random;
  */
 
 //Ableitung von Spieler, hat nur andere Zug-Methode
-public class Com extends Spieler{
+public class Com implements IPlayingMember{
    
     private String _name;
     
@@ -33,5 +33,10 @@ public class Com extends Spieler{
         }
         
         return abzug;
+    }
+
+    @Override
+    public String getName() {
+        return _name;
     }
 }

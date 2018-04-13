@@ -13,4 +13,5 @@ package nimmspiel;
 // interface für die Zug-Methode
 public interface IPlayingMember {
     public int Zug(int verbleibendeSteine);
+    public String getName();
 }
