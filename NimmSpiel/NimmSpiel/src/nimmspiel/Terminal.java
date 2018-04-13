@@ -24,13 +24,17 @@ public class Terminal {
     public void Run()
     {
         Spieler aktSpieler;
+        int abzuziehendeSteine;
         while (_spiel.getSteine() > 0){
             if (_spiel.getDran > 0)
                 aktSpieler = _spiel.getCom()
             else
                 aktSpieler = _spiel.getSpieler();
             
-            _spiel.verringereSteineUm(aktSpieler.Zug());
+            abzuziehendeSteine = aktSpieler.Zug();
+            _spiel.verringereSteineUm(abzuziehendeSteine);
+            _spiel.ErhoeheRunde();
+            _spiel.SetDran(1-_spiel.GetDran());
             Ausgabe.ZugEnde(_spiel);
         }
         Ausgabe.SpielEnde(spiel);
