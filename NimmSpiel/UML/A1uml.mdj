@@ -2994,6 +2994,35 @@
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFiv05oHo8Eh6o=",
+											"_parent": {
+												"$ref": "AAAAAAFivx0TOGes/to="
+											},
+											"model": {
+												"$ref": "AAAAAAFiv05n/48B9/A="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 725,
+											"top": 781,
+											"width": 191,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "+Begruessung(): void",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5,
+											"wordWrap": false
 										}
 									],
 									"visible": true,
@@ -3008,7 +3037,7 @@
 									"left": 720,
 									"top": 731,
 									"width": 201,
-									"height": 53,
+									"height": 68,
 									"autoResize": false
 								},
 								{
@@ -5725,6 +5754,37 @@
 									"_id": "AAAAAAFivx2jJWgc8+A=",
 									"_parent": {
 										"$ref": "AAAAAAFivx2SJGgO2SA="
+									},
+									"visibility": "public",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": "void",
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"direction": "return"
+								}
+							],
+							"concurrency": "sequential",
+							"isQuery": false,
+							"isAbstract": false
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFiv05n/48B9/A=",
+							"_parent": {
+								"$ref": "AAAAAAFivx0TNWejZNk="
+							},
+							"name": "Begruessung",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFiv06UsY9QjHQ=",
+									"_parent": {
+										"$ref": "AAAAAAFiv05n/48B9/A="
 									},
 									"visibility": "public",
 									"isStatic": false,

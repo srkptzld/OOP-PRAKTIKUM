@@ -1,5 +1,10 @@
 package nimmspiel;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Scanner;
+
 /**
  *
  * @author sirkpetzold
@@ -9,8 +14,11 @@ public class Terminal {
     private Spiel _spiel;
 
     // Konstruktor, Instanziert das Feld _spiel und gibt die Spielregeln aus
-    public Terminal() {
-        _spiel = new Spiel();
+    public Terminal() throws IOException {
+        Ausgabe.Begruessung();
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        _spiel = new Spiel(name);
         Ausgabe.SpielRegeln();
     }
 
@@ -31,7 +39,7 @@ public class Terminal {
             _spiel.SetDran(1 - _spiel.GetDran());
             Ausgabe.ZugEnde(_spiel);
         }
-        Ausgabe.SpielEnde(spiel);
+        Ausgabe.SpielEnde(_spiel);
     }
 
 }
