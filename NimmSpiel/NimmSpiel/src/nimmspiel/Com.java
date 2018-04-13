@@ -5,19 +5,33 @@
  */
 package nimmspiel;
 
+import java.math.*;
+import java.util.Random;
+
 /**
  *
  * @author sirkpetzold
  */
+
+//Ableitung von Spieler, hat nur andere Zug-Methode
 public class Com extends Spieler{
    
     private String _name;
     
     public Com(String name){
-        
+        _name = name;
     }
     
-    public int Zug(int verbleibendeSteine){  //begründen warum anders als in UML
+    //Gibt die Anzahl abzuziehender Steine an
+    public int Zug(int verbleibendeSteine){  // Paramter notwendig, da sonst taktisches abziehen unmöglich
+        int abzug;
+        if (verbleibendeSteine >= 10){
+            Random rndm = new Random();
+            abzug = rndm.nextInt(3);
+        }else{
+            abzug = 3 - verbleibendeSteine % 2;
+        }
         
+        return abzug;
     }
 }

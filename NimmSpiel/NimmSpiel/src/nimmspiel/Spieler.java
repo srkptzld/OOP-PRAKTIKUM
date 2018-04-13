@@ -10,6 +10,11 @@ package nimmspiel;
  *
  * @author sirkpetzold
  */
-public class Spieler {
+public class Spieler implements IPlayingMember{
+
+    @Override
+    public int Zug(int verbleibendeSteine) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
