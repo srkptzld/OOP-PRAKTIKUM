@@ -18,6 +18,7 @@ public class Com implements IPlayingMember {
     }
 
     //Gibt die Anzahl abzuziehender Steine an
+    @Override
     public int Zug(int verbleibendeSteine) {  // Paramter notwendig, da sonst taktisches abziehen unmöglich
         int abzug;
         if (verbleibendeSteine >= 10) {
@@ -30,6 +31,7 @@ public class Com implements IPlayingMember {
         return abzug;
     }
 
+    @Override
     public String getName() {
         return _name;
     }
