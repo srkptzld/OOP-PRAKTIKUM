@@ -1,8 +1,5 @@
 package nimmspiel;
 
-import java.math.*;
-import java.util.Random;
-
 /**
  *
  * @author sirkpetzold
@@ -27,7 +24,6 @@ public class Com implements IPlayingMember {
             abzug = 3;
         else 
             abzug = 1;
-        
 
         //    if (verbleibendeSteine >= 10) {
         //        Random rndm = new Random();

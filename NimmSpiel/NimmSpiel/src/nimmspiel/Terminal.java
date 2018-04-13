@@ -1,8 +1,6 @@
 package nimmspiel;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Scanner;
 
 /**
@@ -14,7 +12,7 @@ public class Terminal {
     private Spiel _spiel;
 
     // Konstruktor, Instanziert das Feld _spiel und gibt die Spielregeln aus
-    public Terminal() throws IOException {
+    public Terminal() {
         Ausgabe.Begruessung();
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
