@@ -21,7 +21,7 @@ public class Terminal {
 
     // Schleife bis keine Steine mehr ziehbar
     public void Run() {
-        Spieler aktSpieler;
+        IPlayingMember aktSpieler;
         int abzuziehendeSteine;
         while (_spiel.getSteine() > 0) {
             if (_spiel.getDran > 0) {
@@ -30,7 +30,7 @@ public class Terminal {
                 aktSpieler = _spiel.getSpieler();
             }
 
-            abzuziehendeSteine = aktSpieler.Zug();
+            abzuziehendeSteine = aktSpieler.Zug(_spiel.getSteine());
             _spiel.verringereSteineUm(abzuziehendeSteine);
             _spiel.ErhoeheRunde();
             _spiel.SetDran(1 - _spiel.GetDran());
