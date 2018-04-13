@@ -10,5 +10,9 @@ package nimmspiel;
  * @author sirkpetzold
  */
 public class Spiel {
+	
+	public Spiel() {
+		
+	}
     
 }
