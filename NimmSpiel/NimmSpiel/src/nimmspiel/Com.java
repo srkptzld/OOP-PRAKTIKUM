@@ -19,15 +19,22 @@ public class Com implements IPlayingMember {
 
     //Gibt die Anzahl abzuziehender Steine an
     @Override
-    public int Zug(int verbleibendeSteine) {  // Paramter notwendig, da sonst taktisches abziehen unmöglich
+    public int Zug(int verbleibendeSteine) {  // Parameter notwendig, da sonst taktisches abziehen unmöglich
         int abzug;
-        if (verbleibendeSteine >= 10) {
-            Random rndm = new Random();
-            abzug = rndm.nextInt(3);
-        } else {
-            abzug = 3 - verbleibendeSteine % 2;
-        }
+        if (verbleibendeSteine % 2 == 0) 
+            abzug = 2;
+        else if (verbleibendeSteine >= 10) 
+            abzug = 3;
+        else 
+            abzug = 1;
+        
 
+        //    if (verbleibendeSteine >= 10) {
+        //        Random rndm = new Random();
+        //        abzug = rndm.nextInt(3);
+        //    } else {
+        //        abzug = 3 - verbleibendeSteine % 2;
+        //    }
         return abzug;
     }
 
