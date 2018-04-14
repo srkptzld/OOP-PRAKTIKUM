@@ -16,7 +16,7 @@ public class Terminal {
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         _spiel = new Spiel(name);
-        Ausgabe.SpielRegeln(_spiel.getSteine);
+        Ausgabe.SpielRegeln(_spiel.getSteine());
     }
 
     // Schleife bis keine Steine mehr ziehbar
@@ -34,7 +34,7 @@ public class Terminal {
             _spiel.verringereSteineUm(abzuziehendeSteine);
             _spiel.ErhoeheRunde();
             _spiel.SetDran(1 - _spiel.GetDran());
-            Ausgabe.ZugEnde(_spiel);
+            Ausgabe.ZugEnde(abzuziehendeSteine, _spiel.getSteine());
         }
         Ausgabe.SpielEnde(_spiel);
     }
