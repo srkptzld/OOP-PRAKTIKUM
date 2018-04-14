@@ -24,4 +24,12 @@ public class Ausgabe {
 		
 	}
 	
+	public static void ZugEnde(int abgezogeneSteine, int uebrigeSteine) {
+		
+		System.out.println("Es wurden " + abgezogeneSteine + " Steine genommen.");
+		System.out.println("Auf dem Haufen befinden sich noch " + uebrigeSteine + " Steine.");
+		
+	}
+	
+	
 }
