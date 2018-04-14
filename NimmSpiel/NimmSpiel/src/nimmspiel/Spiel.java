@@ -19,7 +19,7 @@ public class Spiel {
 		this._anzSteine = (int)(Math.random() * 10) + 20; // Legt einen Anfangswert zwischen 20 & 30 für den Steinhaufen fest
 		
 		this._spieler_spieler = new Spieler(name); // Erzeugt Spieler
-		this._spieler_com = new Spieler(COM); // Erzeugt Com
+		this._spieler_com = new Spieler("COM"); // Erzeugt Com
 		
 		this._rundenZaehler = 1; // Setzt Runde auf 1
 		
