@@ -13,8 +13,6 @@ public class Spiel {
 	private int _rundenZaehler;
 	
 	public Spiel(String name) {
-		// keine Methode SetSteine sondern VerringereSteineUm(int anzahl) !! macht mehr sinn
-                // Methode getCom(): Com auch ins UML..
 		
 		this._anzSteine = (int)(Math.random() * 10) + 20; // Legt einen Anfangswert zwischen 20 & 30 für den Steinhaufen fest
 		
