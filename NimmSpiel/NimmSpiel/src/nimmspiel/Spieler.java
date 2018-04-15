@@ -10,10 +10,8 @@ public class Spieler implements IPlayingMember {
 	
 	private String _name;
 	
-	public Spieler(String name) { // Konstruktor
-		
-		_name = name;
-		
+	public Spieler(String name) { // Konstruktor	
+		_name = name;	
 	}
 
     @Override
@@ -47,7 +45,7 @@ public class Spieler implements IPlayingMember {
     }
 
     @Override
-    public String getName() {
+    public String getName() { // Getter Spielernamen
         return _name;
     }
 
