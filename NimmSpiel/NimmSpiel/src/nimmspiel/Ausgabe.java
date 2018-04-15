@@ -22,10 +22,11 @@ public class Ausgabe {
 		
 	}
 	
-	public static void ZugEnde(int abgezogeneSteine, int uebrigeSteine, IPlayingMember spieler) {	
+	public static void ZugEnde(int abgezogeneSteine, Spiel spiel) {	
+		IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();
 		if (abgezogeneSteine > 0)
                     System.out.println("Es wurden " + abgezogeneSteine + " Steine von " + spieler.getName() + " genommen.");
-		System.out.println("Auf dem Haufen befinden sich noch " + uebrigeSteine + " Steine.");
+		System.out.println("Auf dem Haufen befinden sich noch " + spiel.getSteine + " Steine.");
                 System.out.println();
 		
 	}

@@ -36,7 +36,7 @@ public class Terminal {
             _spiel.verringereSteineUm(abzuziehendeSteine);
             _spiel.erhoeheRunde();
             _spiel.setDran((byte) (1 - _spiel.getDran()));
-            Ausgabe.ZugEnde(abzuziehendeSteine, _spiel.getSteine(), aktSpieler);
+            Ausgabe.ZugEnde(abzuziehendeSteine, _spiel);
         }
         Ausgabe.SpielEnde(_spiel);
     }
