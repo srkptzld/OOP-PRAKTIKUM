@@ -21,10 +21,11 @@ public class Terminal {
 
     // Schleife bis keine Steine mehr ziehbar
     public void Run() {
-        IPlayingMember aktSpieler;
+        IPlayingMember aktSpieler = null;
         int abzuziehendeSteine;
+        Ausgabe.ZugEnde(0, _spiel.getSteine(), aktSpieler);
         while (_spiel.getSteine() > 0) {
-            if (_spiel.getDran > 0) {
+            if (_spiel.getDran() > 0) {
                 aktSpieler = _spiel.getCom();
             } else {
                 aktSpieler = _spiel.getSpieler();
@@ -32,11 +33,19 @@ public class Terminal {
 
             abzuziehendeSteine = aktSpieler.Zug(_spiel.getSteine());
             _spiel.verringereSteineUm(abzuziehendeSteine);
-            _spiel.ErhoeheRunde();
-            _spiel.SetDran(1 - _spiel.GetDran());
-            Ausgabe.ZugEnde(abzuziehendeSteine, _spiel.getSteine());
+            _spiel.erhoeheRunde();
+            _spiel.setDran((byte) (1 - _spiel.getDran()));
+            Ausgabe.ZugEnde(abzuziehendeSteine, _spiel.getSteine(), aktSpieler);
         }
         Ausgabe.SpielEnde(_spiel);
+    }
+    
+    // Re-Initializes 
+    public void ReInit(){
+        String name = _spiel.getSpieler().getName();
+        _spiel = null;
+        System.gc();
+        _spiel = new Spiel(name);
     }
 
 }
