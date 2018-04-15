@@ -17,23 +17,27 @@ public class Spieler implements IPlayingMember {
 	}
 
     @Override
-    public int Zug(int verbleibendeSteine) { // Nimmt den Zug entgegen und prüft ob regelkonform
+    public int Zug(int verbleibendeSteine) { // Nimmt den Zug entgegen und prï¿½ft ob regelkonform
         
     	boolean konform = false;
-    	int abzug;
+    	int abzug = 0;
     	
-    	System.out.println("Wieviele Steine möchten Sie nehmen?");
+    	System.out.println("Wieviele Steine mÃ¶chten Sie nehmen?");
     	
-    	while(konform == false) {
+    	while (konform == false) {
     		
     		Scanner scanner = new Scanner(System.in);
-            abzug = scanner.nextLine();
+            abzug = scanner.nextInt();
     		
-            if(abzug < 1 || abzug > 3) {
+            if (abzug < 1 || abzug > 3) {
             	System.out.println("Die Eingabe ist nicht regelkonform.");
-            	System.out.println("Bitte wählen Sie eine Zahl von 1 bis 3.");
+            	System.out.println("Bitte wÃ¤hlen Sie eine Zahl von 1 bis 3.");
+            }else if (verbleibendeSteine - abzug < 0){
+            	System.out.println("Die Eingabe ist nicht regelkonform.");
+                Ausgabe.ZugEnde(0, verbleibendeSteine, null);
+                
             }else {
-            	konform == true;
+            	konform = true;
             }
     		
     	}
