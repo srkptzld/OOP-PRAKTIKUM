@@ -14,19 +14,15 @@ public class Spiel {
 	
 	public Spiel(String name) {
 		
-		this._anzSteine = (int)(Math.random() * 10) + 20; // Legt einen Anfangswert zwischen 20 & 30 für den Steinhaufen fest
+		_anzSteine = (int)(Math.random() * 10) + 20; // Legt einen Anfangswert zwischen 20 & 30 fï¿½r den Steinhaufen fest
 		
-		this._spieler_spieler = new Spieler(name); // Erzeugt Spieler
-		this._spieler_com = new Spieler("COM"); // Erzeugt Com
+		_spieler = new Spieler(name); // Erzeugt Spieler
+                _com = new Com(); // Erzeugt Com
 		
-		this._rundenZaehler = 1; // Setzt Runde auf 1
+		_rundenZaehler = 1; // Setzt Runde auf 1
 		
 	}
     
-	public void Run() {
-		
-	}
-	
 	public Spieler getSpieler() {
 		
 		return _spieler;
@@ -47,13 +43,13 @@ public class Spiel {
 	
 	public byte getDran() {
 		
-		return dran;
+		return _dran;
 		
 	}
 	
 	public int getRunde() {
 		
-		return rundenZaehler;
+		return _rundenZaehler;
 	
 	}
 	
@@ -69,9 +65,9 @@ public class Spiel {
 		
 	}
 	
-	public void erhoeheRunde() { // Nächste Runde
+	public void erhoeheRunde() { // Nï¿½chste Runde
 		
-		rundenZaehler = rundenZaehler + 1;
+		_rundenZaehler = _rundenZaehler + 1;
 		
 	}
 	
