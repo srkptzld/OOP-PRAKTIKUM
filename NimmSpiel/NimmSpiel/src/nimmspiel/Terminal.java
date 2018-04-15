@@ -16,6 +16,7 @@ public class Terminal {
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         _spiel = new Spiel(name);
+        System.out.println();
         Ausgabe.SpielRegeln(_spiel.getSteine());
     }
 
