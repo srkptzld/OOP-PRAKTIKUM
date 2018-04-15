@@ -7,17 +7,14 @@ package nimmspiel;
 //Ableitung von Spieler, hat nur andere Zug-Methode
 public class Com implements IPlayingMember {
 
-    private String _name;
-
     // Konstruktor
-    public Com(String name) {
-        _name = name;
+    public Com() {
     }
 
     //Gibt die Anzahl abzuziehender Steine an
     @Override
     public int Zug(int verbleibendeSteine) {  // Parameter notwendig, da sonst taktisches abziehen unmöglich
-        int abzug;
+        int abzug;  
         if (verbleibendeSteine % 2 == 0) 
             abzug = 2;
         else if (verbleibendeSteine >= 10) 
@@ -25,17 +22,12 @@ public class Com implements IPlayingMember {
         else 
             abzug = 1;
 
-        //    if (verbleibendeSteine >= 10) {
-        //        Random rndm = new Random();
-        //        abzug = rndm.nextInt(3);
-        //    } else {
-        //        abzug = 3 - verbleibendeSteine % 2;
-        //    }
         return abzug;
     }
 
+    //returns the players name
     @Override
     public String getName() {
-        return _name;
+        return "COM";
     }
 }
