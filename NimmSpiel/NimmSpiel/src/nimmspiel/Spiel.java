@@ -18,6 +18,8 @@ public class Spiel {
 		
 		_spieler = new Spieler(name); // Erzeugt Spieler
                 _com = new Com(); // Erzeugt Com
+                
+        _dran = (byte)(Math.random()<0.5)?0:1; // Legt fest, welcher Spieler anfängt
 		
 		_rundenZaehler = 1; // Setzt Runde auf 1
 		
