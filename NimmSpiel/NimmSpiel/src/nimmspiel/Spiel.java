@@ -12,48 +12,54 @@ public class Spiel {
 	private byte _dran;
 	private int _rundenZaehler;
 	
-	public Spiel(String name) { // Konstruktor
+	// Konstruktor
+	public Spiel(String name) { 
 		
-		_anzSteine = (int)(Math.random() * 10) + 20; // Legt einen Anfangswert zwischen 20 & 30 fï¿½r den Steinhaufen fest
+		// Legt einen Anfangswert zwischen 20 & 30 fï¿½r den Steinhaufen fest
+		_anzSteine = (int)(Math.random() * 10) + 20; 
 		
-		_spieler = new Spieler(name); // Erzeugt Spieler
-                _com = new Com(); // Erzeugt Com
+		// Erzeugt Spieler
+		_spieler = new Spieler(name); 
+		// Erzeugt Com
+		_com = new Com(); 
                 
-        _dran = (byte)(Math.random()<0.5)?0:1; // Legt fest, welcher Spieler anfängt
+		// Legt fest, welcher Spieler anfängt
+        _dran = (byte)(Math.random()<0.5)?0:1; 
 		
-		_rundenZaehler = 1; // Setzt Runde auf 1
+        // Setzt Runde auf 1
+		_rundenZaehler = 1; 
 		
 	}
-    
-	public Spieler getSpieler() { // Getter Spieler		
+	// Getter Spieler
+	public Spieler getSpieler() { 		
 		return _spieler;		
 	}
-	
-	public Com getCom() { // Getter Com		
+	// Getter Com	
+	public Com getCom() { 	
 		return _com;		
 	}
-	
-	public int getSteine() { // Getter Anzahl Steine		
+	// Getter Anzahl Steine
+	public int getSteine() { 		
 		return _anzSteine;		
 	}
-	
-	public byte getDran() { // Getter Dran		
+	// Getter Dran
+	public byte getDran() { 		
 		return _dran;		
 	}
-	
-	public int getRunde() { // Getter Rundenzaehler		
+	// Getter Rundenzaehler
+	public int getRunde() { 		
 		return _rundenZaehler;	
 	}
-	
-	public void verringereSteineUm(int anzahl) { // Verringert nach Zug den Steinhaufen um angegebenen Wert		
+	// Verringert nach Zug den Steinhaufen um angegebenen Wert
+	public void verringereSteineUm(int anzahl) { 		
 		_anzSteine = _anzSteine - anzahl;	
 	}
-	
-	public void setDran(byte dran) { 	// Setter Dran	
+	// Setter Dran
+	public void setDran(byte dran) { 		
 		_dran = dran;		
 	}
-	
-	public void erhoeheRunde() { // Nï¿½chste Runde		
+	// Nï¿½chste Runde
+	public void erhoeheRunde() { 	
 		_rundenZaehler = _rundenZaehler + 1;		
 	}
 	

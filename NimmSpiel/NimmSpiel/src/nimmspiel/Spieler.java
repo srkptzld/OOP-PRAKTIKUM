@@ -10,12 +10,14 @@ public class Spieler implements IPlayingMember {
 	
 	private String _name;
 	
-	public Spieler(String name) { // Konstruktor	
+	// Konstruktor	
+	public Spieler(String name) { 
 		_name = name;	
 	}
 
+	// Nimmt den Zug entgegen und pr�ft ob regelkonform
     @Override
-    public int Zug(int verbleibendeSteine) { // Nimmt den Zug entgegen und pr�ft ob regelkonform
+    public int Zug(int verbleibendeSteine) { 
         
     	boolean konform = false;
     	int abzug = 0;
@@ -44,8 +46,9 @@ public class Spieler implements IPlayingMember {
     	
     }
 
+ // Getter Spielernamen
     @Override
-    public String getName() { // Getter Spielernamen
+    public String getName() { 
         return _name;
     }
 
