@@ -32,7 +32,7 @@ public class Spieler implements IPlayingMember {
             	System.out.println("Bitte wählen Sie eine Zahl von 1 bis 3.");
             }else if (verbleibendeSteine - abzug < 0){
             	System.out.println("Die Eingabe ist nicht regelkonform.");
-                Ausgabe.ZugEnde(0, verbleibendeSteine, null);
+                Ausgabe.ZugEnde(0, null);
                 
             }else {
             	konform = true;

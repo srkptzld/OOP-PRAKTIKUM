@@ -28,7 +28,7 @@ public class Ausgabe {
 		IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();
 		if (abgezogeneSteine > 0)
                     System.out.println("Es wurden " + abgezogeneSteine + " Steine von " + spieler.getName() + " genommen.");
-		System.out.println("Auf dem Haufen befinden sich noch " + spiel.getSteine + " Steine.");
+		System.out.println("Auf dem Haufen befinden sich noch " + spiel.getSteine() + " Steine.");
                 System.out.println();
 		
 	}

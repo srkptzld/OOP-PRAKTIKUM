@@ -24,7 +24,7 @@ public class Terminal {
     public void Run() {
         IPlayingMember aktSpieler = null;
         int abzuziehendeSteine;
-        Ausgabe.ZugEnde(0, _spiel.getSteine(), aktSpieler);
+        Ausgabe.ZugEnde(0, _spiel);
         while (_spiel.getSteine() > 0) {
             if (_spiel.getDran() > 0) {
                 aktSpieler = _spiel.getCom();
@@ -45,7 +45,6 @@ public class Terminal {
     public void ReInit(){
         String name = _spiel.getSpieler().getName();
         _spiel = null;
-        System.gc();
         _spiel = new Spiel(name);
     }
 

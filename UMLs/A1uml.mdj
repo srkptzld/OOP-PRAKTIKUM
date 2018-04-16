@@ -2382,7 +2382,7 @@
 											"containerExtending": false,
 											"left": 725,
 											"top": 703,
-											"width": 191,
+											"width": 308,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -2454,7 +2454,7 @@
 									"containerExtending": false,
 									"left": 720,
 									"top": 696,
-									"width": 201,
+									"width": 318,
 									"height": 25,
 									"autoResize": false,
 									"stereotypeLabel": {
@@ -2490,7 +2490,7 @@
 									"containerExtending": false,
 									"left": 720,
 									"top": 721,
-									"width": 201,
+									"width": 318,
 									"height": 10,
 									"autoResize": false
 								},
@@ -2524,7 +2524,7 @@
 											"containerExtending": false,
 											"left": 725,
 											"top": 736,
-											"width": 191,
+											"width": 308,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -2553,7 +2553,7 @@
 											"containerExtending": false,
 											"left": 725,
 											"top": 751,
-											"width": 191,
+											"width": 308,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -2582,11 +2582,11 @@
 											"containerExtending": false,
 											"left": 725,
 											"top": 766,
-											"width": 191,
+											"width": 308,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+SpielEnde(spiel: Spiel): void",
+											"text": "+SpielEnde(abgezogeneSteine: int, spiel: Spiel): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2611,7 +2611,7 @@
 											"containerExtending": false,
 											"left": 725,
 											"top": 781,
-											"width": 191,
+											"width": 308,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -2632,7 +2632,7 @@
 									"containerExtending": false,
 									"left": 720,
 									"top": 731,
-									"width": 201,
+									"width": 318,
 									"height": 68,
 									"autoResize": false
 								},
@@ -2696,7 +2696,7 @@
 							"containerExtending": false,
 							"left": 720,
 							"top": 696,
-							"width": 201,
+							"width": 318,
 							"height": 112,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
@@ -5697,13 +5697,11 @@
 									"_parent": {
 										"$ref": "AAAAAAFivx2SJGgO2SA="
 									},
-									"name": "spiel",
+									"name": "abgezogeneSteine",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFivwlnrmHOHCI="
-									},
+									"type": "int",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -5723,6 +5721,24 @@
 									"isOrdered": false,
 									"isUnique": false,
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFizhO7H6NtuRY=",
+									"_parent": {
+										"$ref": "AAAAAAFivx2SJGgO2SA="
+									},
+									"name": "spiel",
+									"visibility": "public",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": {
+										"$ref": "AAAAAAFivwlnrmHOHCI="
+									},
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"direction": "in"
 								}
 							],
 							"concurrency": "sequential",
