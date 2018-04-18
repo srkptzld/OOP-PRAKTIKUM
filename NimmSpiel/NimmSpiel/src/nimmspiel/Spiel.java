@@ -1,5 +1,7 @@
 package nimmspiel;
 
+import java.util.Random;
+
 /**
  *
  * @author funbold
@@ -23,8 +25,10 @@ public class Spiel {
 		// Erzeugt Com
 		_com = new Com(); 
                 
-		// Legt fest, welcher Spieler anfängt
-        _dran = (byte)(Math.random()<0.5)?0:1; 
+		// Legt fest, welcher Spieler anfï¿½ngt
+                boolean starter = new Random().nextBoolean();
+                _dran = (byte)(starter?1:0);
+        
 		
         // Setzt Runde auf 1
 		_rundenZaehler = 1; 

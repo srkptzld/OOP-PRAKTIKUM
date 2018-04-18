@@ -36,7 +36,7 @@ public class Ausgabe {
 	// Ausgabe bei Spielende
     public static void SpielEnde(Spiel spiel ){
         IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();
-        System.out.println("Nach " + spiel.getRunde() + " Runden hat der Spieler " + spieler.getName() + " verloren!");
+        System.out.println("Nach " + spiel.getRunde() + " Runden hat der Spieler " + spieler.getName() + " gewonnen!");
         System.out.println();
     }
     
