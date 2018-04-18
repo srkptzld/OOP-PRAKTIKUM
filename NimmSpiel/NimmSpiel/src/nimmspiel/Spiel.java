@@ -15,6 +15,11 @@ public class Spiel {
 	private int _rundenZaehler;
 	
 	// Konstruktor
+
+    /**
+     *
+     * @param name
+     */
 	public Spiel(String name) { 
 		
 		// Legt einen Anfangswert zwischen 20 & 30 f�r den Steinhaufen fest
@@ -35,34 +40,73 @@ public class Spiel {
 		
 	}
 	// Getter Spieler
+
+    /**
+     *
+     * @return
+     */
 	public Spieler getSpieler() { 		
 		return _spieler;		
 	}
 	// Getter Com	
+
+    /**
+     *
+     * @return
+     */
 	public Com getCom() { 	
 		return _com;		
 	}
 	// Getter Anzahl Steine
+
+    /**
+     *
+     * @return
+     */
 	public int getSteine() { 		
 		return _anzSteine;		
 	}
 	// Getter Dran
+
+    /**
+     *
+     * @return
+     */
 	public byte getDran() { 		
 		return _dran;		
 	}
 	// Getter Rundenzaehler
+
+    /**
+     *
+     * @return
+     */
 	public int getRunde() { 		
 		return _rundenZaehler;	
 	}
 	// Verringert nach Zug den Steinhaufen um angegebenen Wert
+
+    /**
+     *
+     * @param anzahl
+     */
 	public void verringereSteineUm(int anzahl) { 		
 		_anzSteine = _anzSteine - anzahl;	
 	}
 	// Setter Dran
+
+    /**
+     *
+     * @param dran
+     */
 	public void setDran(byte dran) { 		
 		_dran = dran;		
 	}
 	// N�chste Runde
+
+    /**
+     *
+     */
 	public void erhoeheRunde() { 	
 		_rundenZaehler = _rundenZaehler + 1;		
 	}

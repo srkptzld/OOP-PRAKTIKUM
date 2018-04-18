@@ -9,12 +9,19 @@ public class Ausgabe {
     
 	
 	// Ausgabe der Begruessung bei Start des Spiels
+
+    /**
+     *
+     */
 	public static void Begruessung(){		
 		System.out.println("Herzlich willkommen. Zum Spielen Namen eingeben und ENTER drücken:");	
 	}
 	
-	// Ausgabe der Spielregeln
-	public static void SpielRegeln(int anzSteine) {
+    /**
+     *
+     * @param anzSteine
+     */
+    public static void SpielRegeln(int anzSteine) {
 		System.out.println("Die Spielregeln sind simpel:");
 		System.out.println("1. Auf dem Steinhaufen befinden sich " + anzSteine + " Steine.");
 		System.out.println("2. Die Spieler nehmen abwechselnd 1-3 Steine vom Haufen, bis keine Steine mehr übrig sind.");
@@ -24,6 +31,11 @@ public class Ausgabe {
 	}
 	
 	// Ausgabe Infos nach Zugende
+    /**
+     *
+     * @param abgezogeneSteine
+     * @param spiel
+     */
 	public static void ZugEnde(int abgezogeneSteine, Spiel spiel) {	
 		IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();
 		if (abgezogeneSteine > 0)
@@ -34,6 +46,11 @@ public class Ausgabe {
 	}
 	
 	// Ausgabe bei Spielende
+
+    /**
+     *
+     * @param spiel
+     */
     public static void SpielEnde(Spiel spiel ){
         IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();
         System.out.println("Nach " + spiel.getRunde() + " Runden hat der Spieler " + spieler.getName() + " gewonnen!");

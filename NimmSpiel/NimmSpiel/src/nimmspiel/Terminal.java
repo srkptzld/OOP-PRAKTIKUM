@@ -11,6 +11,10 @@ public class Terminal {
     private Spiel _spiel;
 
     // Konstruktor, Instanziert das Feld _spiel und gibt die Spielregeln aus
+
+    /**
+     *
+     */
     public Terminal() {
         Ausgabe.Begruessung();
         Scanner scanner = new Scanner(System.in);
@@ -21,6 +25,10 @@ public class Terminal {
     }
 
     // Schleife bis keine Steine mehr ziehbar
+
+    /**
+     *
+     */
     public void Run() {
         IPlayingMember aktSpieler = null;
         int abzuziehendeSteine;
@@ -43,6 +51,10 @@ public class Terminal {
     }
     
     // Re-Initializes 
+
+    /**
+     *
+     */
     public void ReInit(){
         String name = _spiel.getSpieler().getName();
         _spiel = null;

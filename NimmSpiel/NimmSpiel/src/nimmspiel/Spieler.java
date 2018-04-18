@@ -11,11 +11,22 @@ public class Spieler implements IPlayingMember {
 	private String _name;
 	
 	// Konstruktor	
+
+    /**
+     *
+     * @param name
+     */
 	public Spieler(String name) { 
 		_name = name;	
 	}
 
 	// Nimmt den Zug entgegen und pr�ft ob regelkonform
+
+    /**
+     *
+     * @param verbleibendeSteine
+     * @return
+     */
     @Override
     public int Zug(int verbleibendeSteine) { 
         
@@ -47,6 +58,11 @@ public class Spieler implements IPlayingMember {
     }
 
  // Getter Spielernamen
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() { 
         return _name;
