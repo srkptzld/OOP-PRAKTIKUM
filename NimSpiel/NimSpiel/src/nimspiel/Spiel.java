@@ -1,4 +1,4 @@
-package nimmspiel;
+package nimspiel;
 
 import java.util.Random;
 
@@ -23,8 +23,8 @@ public class Spiel {
 	public Spiel(String name) { 
 		
 		// Legt einen Anfangswert zwischen 20 & 30 f�r den Steinhaufen fest
-		_anzSteine = (int)(Math.random() * 10) + 20; 
-		
+		_anzSteine = (int)(Math.random() * 10) + 20;
+                
 		// Erzeugt Spieler
 		_spieler = new Spieler(name); 
 		// Erzeugt Com

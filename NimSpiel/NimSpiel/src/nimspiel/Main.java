@@ -1,4 +1,4 @@
-package nimmspiel;
+package nimspiel;
 
 import java.util.Scanner;
 /**

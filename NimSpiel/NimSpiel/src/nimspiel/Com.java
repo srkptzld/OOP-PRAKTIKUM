@@ -1,4 +1,4 @@
-package nimmspiel;
+package nimspiel;
 
 /**
  *
@@ -7,21 +7,12 @@ package nimmspiel;
 //Ableitung von Spieler, hat nur andere Zug-Methode
 public class Com implements IPlayingMember {
 
-    // Konstruktor
-
     /**
-     *
+     * Konstruktor
      */
     public Com() {
     }
 
-    //Gibt die Anzahl abzuziehender Steine an
-
-    /**
-     *
-     * @param verbleibendeSteine
-     * @return
-     */
     @Override
     public int Zug(int verbleibendeSteine) {  // Parameter notwendig, da sonst taktisches abziehen unmöglich
         int abzug = 0;  
@@ -43,12 +34,6 @@ public class Com implements IPlayingMember {
         return abzug;
     }
 
-    //returns the players name
-
-    /**
-     *
-     * @return
-     */
     @Override
     public String getName() {
         return "COM";

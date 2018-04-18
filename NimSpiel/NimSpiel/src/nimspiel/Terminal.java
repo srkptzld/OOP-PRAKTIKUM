@@ -1,19 +1,17 @@
-package nimmspiel;
+package nimspiel;
 
 import java.util.Scanner;
 
 /**
- *
+ * Terminal Klasse: Führt das Nim-Spiel aus.
  * @author sirkpetzold
  */
 public class Terminal {
 
     private Spiel _spiel;
 
-    // Konstruktor, Instanziert das Feld _spiel und gibt die Spielregeln aus
-
     /**
-     *
+     * Konstruktor
      */
     public Terminal() {
         Ausgabe.Begruessung();
@@ -23,11 +21,9 @@ public class Terminal {
         System.out.println();
         Ausgabe.SpielRegeln(_spiel.getSteine());
     }
-
-    // Schleife bis keine Steine mehr ziehbar
-
+    
     /**
-     *
+     * Schleife bis keine Steine mehr ziehbar
      */
     public void Run() {
         IPlayingMember aktSpieler = null;
@@ -49,11 +45,10 @@ public class Terminal {
         Ausgabe.SpielEnde(_spiel);
   
     }
-    
-    // Re-Initializes 
+  
 
     /**
-     *
+     * Reinitialisiert das Spiel
      */
     public void ReInit(){
         String name = _spiel.getSpieler().getName();
