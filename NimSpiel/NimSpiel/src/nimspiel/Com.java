@@ -1,10 +1,10 @@
 package nimspiel;
 
 /**
- *
+ * Com-Spieler
  * @author sirkpetzold
  */
-//Ableitung von Spieler, hat nur andere Zug-Methode
+
 public class Com implements IPlayingMember {
 
     /**

@@ -18,7 +18,7 @@ public class Ausgabe {
     /**
      * Ausgabe der Spielregeln
      * 
-     * @param anzSteine
+     * @param anzSteine int
      */
     public static void SpielRegeln(int anzSteine) {
 	System.out.println("Die Spielregeln sind simpel:");
@@ -32,8 +32,8 @@ public class Ausgabe {
     /**
      * Ausgabe der Infos nach Zugende
      * 
-     * @param abgezogeneSteine
-     * @param spiel
+     * @param abgezogeneSteine int
+     * @param spiel Spiel
      */
     public static void ZugEnde(int abgezogeneSteine, Spiel spiel) {	
         IPlayingMember spieler = (spiel.getDran() > 0) ? spiel.getCom() : spiel.getSpieler();

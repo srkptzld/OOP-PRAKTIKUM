@@ -23,7 +23,7 @@ public class Terminal {
     }
     
     /**
-     * Schleife bis keine Steine mehr ziehbar
+     * Startet und beendet die aktuelle Runde
      */
     public void Run() {
         IPlayingMember aktSpieler = null;
@@ -43,7 +43,6 @@ public class Terminal {
             _spiel.setDran((byte) (1 - _spiel.getDran()));
         }
         Ausgabe.SpielEnde(_spiel);
-  
     }
   
 

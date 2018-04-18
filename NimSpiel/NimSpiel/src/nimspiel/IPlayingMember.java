@@ -1,22 +1,21 @@
 package nimspiel;
 
 /**
- *
+ * Interface mit Zug-Methode
  * @author sirkpetzold
  */
-/// interface für die Zug-Methode
 public interface IPlayingMember {
 
     /**
      * Gibt abzuziehende Steine zurück
-     * @param verbleibendeSteine verbleibende Steine
+     * @param verbleibendeSteine int
      * @return abzuziehende Steine
      */
     public int Zug(int verbleibendeSteine); 
 
     /**
      * Gibt den Namen zurück
-     * @return Name
+     * @return String
      */
     public String getName();                
 }

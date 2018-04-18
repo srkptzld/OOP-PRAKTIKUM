@@ -1,6 +1,7 @@
 package nimspiel;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  * Enthält die Zug-Methode des Spielers sowie eine
@@ -32,13 +33,22 @@ public class Spieler implements IPlayingMember {
         
     	boolean konform = false;
     	int abzug = 0;
+        boolean wertIstGueltig = false;
     	
     	System.out.println("Wieviele Steine möchten Sie nehmen?");
     	
-    	while (konform == false) {
-    		
-    		Scanner scanner = new Scanner(System.in);
-            abzug = scanner.nextInt();
+    	while (konform == false) {	
+            Scanner scanner = new Scanner(System.in);
+          
+                try{
+                    abzug = scanner.nextInt();
+                    wertIstGueltig = true;
+                }catch(InputMismatchException e){
+                    System.out.println("Bitte eine Zahl zwischen 1 und 3 eingeben.");
+                    System.out.println("Wieviele Steine möchten Sie nehmen?");
+                    continue;
+                }
+            
     		
             if (abzug < 1 || abzug > 3) {
             	System.out.println("Die Eingabe ist nicht regelkonform.");
