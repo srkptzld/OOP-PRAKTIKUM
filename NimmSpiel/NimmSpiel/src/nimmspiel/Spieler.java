@@ -3,27 +3,27 @@ package nimmspiel;
 
 import java.util.Scanner;
 /**
- *
+ * Enthält die Zug-Methode des Spielers sowie eine
+ * get-Methode für den Spielernamen
+ * 
  * @author funbold
  */
 public class Spieler implements IPlayingMember {
 	
-	private String _name;
-	
-	// Konstruktor	
+    private String _name;
 
     /**
-     *
+     * Konstruktor
+     * 
      * @param name
      */
-	public Spieler(String name) { 
-		_name = name;	
-	}
-
-	// Nimmt den Zug entgegen und pr�ft ob regelkonform
+    public Spieler(String name) { 
+	_name = name;	
+    }
 
     /**
-     *
+     * Nimmt den Zug entgegen und pr�ft ob regelkonform
+     * 
      * @param verbleibendeSteine
      * @return
      */
@@ -57,10 +57,9 @@ public class Spieler implements IPlayingMember {
     	
     }
 
- // Getter Spielernamen
-
     /**
-     *
+     * Get-Methode für Spielernamen
+     * 
      * @return
      */
     @Override
