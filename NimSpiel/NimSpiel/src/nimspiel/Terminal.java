@@ -53,6 +53,7 @@ public class Terminal {
         String name = _spiel.getSpieler().getName();
         _spiel = null;
         _spiel = new Spiel(name);
+        System.out.println("-------------------------------------------------");
     }
 
 }
