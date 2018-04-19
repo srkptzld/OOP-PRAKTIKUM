@@ -14,12 +14,14 @@ public class Main {
      */
     public static void main(String[] args) { 
         Terminal terminal = new Terminal();
-        boolean wertIstGueltig = false;
-        
+        boolean wertIstGueltig;
         int run = 1;
+        
         while (run > 0)
         {
+            wertIstGueltig = false;
             terminal.Run();
+            
             System.out.println("Nochmal? (1 = Ja / 0 = Nein)");
             while (!wertIstGueltig)
                try{ 

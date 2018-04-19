@@ -81,7 +81,7 @@ public class Spiel {
      * @return
      */
     public int getRunde() {
-        return _rundenZaehler;
+        return _rundenZaehler / 2;
     }
 
     /**
