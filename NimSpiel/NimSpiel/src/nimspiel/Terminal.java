@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * Terminal Klasse: Führt das Nim-Spiel aus.
+ *
  * @author sirkpetzold
  */
 public class Terminal {
@@ -21,7 +22,7 @@ public class Terminal {
         System.out.println();
         Ausgabe.SpielRegeln(_spiel.getSteine());
     }
-    
+
     /**
      * Startet und beendet die aktuelle Runde
      */
@@ -44,12 +45,11 @@ public class Terminal {
         }
         Ausgabe.SpielEnde(_spiel);
     }
-  
 
     /**
      * Reinitialisiert das Spiel
      */
-    public void ReInit(){
+    public void ReInit() {
         String name = _spiel.getSpieler().getName();
         _spiel = null;
         _spiel = new Spiel(name);
