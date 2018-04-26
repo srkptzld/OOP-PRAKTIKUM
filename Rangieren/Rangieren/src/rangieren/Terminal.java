@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * 
+ * @author sirkpetzold
  */
 public class Terminal {
 

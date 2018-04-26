@@ -22,14 +22,19 @@ public class Gleis {
      * 
      */
     public int _niedrigsteWaggonNo;
+   
+    /**
+     * 
+     */ 
+    private String _gleisTyp;
 
 
 
     /**
      * 
      */
-    public void Create() {
-        // TODO implement here
+    public void Create(String gleisTyp) {
+        _gleisTyp = gleisTyp;
     }
 
     /**
@@ -52,6 +57,13 @@ public class Gleis {
      */
     public void getAndRemoveWaggon(int index) {
         // TODO implement here
+    }
+
+    /**
+     * @return the _gleisTyp
+     */
+    public String getGleisTyp() {
+        return _gleisTyp;
     }
 
 }

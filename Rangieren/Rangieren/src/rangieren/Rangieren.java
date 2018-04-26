@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * 
+ * @author sirkpetzold
  */
 public class Rangieren {
 
@@ -45,7 +46,6 @@ public class Rangieren {
     }
 
     /**
-     * @return
      */
     public void run() {
         // TODO implement here
