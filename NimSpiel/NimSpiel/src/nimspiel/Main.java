@@ -35,7 +35,6 @@ public class Main {
                 }catch(InputMismatchException e){
                     System.out.println("Bitte 0 oder 1 eingeben.");
                     System.out.println("Nochmal? (1 = Ja / 0 = Nein)");
-                    continue;
                 }
            
             if (run > 0)
