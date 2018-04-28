@@ -1,17 +1,9 @@
-
-import java.util.*;
-
+package rangieren;
 /**
  * 
  * @author sirkpetzold
  */
 public class Waggon {
-
-    /**
-     * Default constructor
-     */
-    public Waggon() {
-    }
 
     /**
      * 
@@ -20,10 +12,11 @@ public class Waggon {
 
 
     /**
-     * @param waggonNr
+     * @param waggonNo
      */
-    public void Create(int waggonNr) {
+    public Waggon(int waggonNo) {
         // TODO implement here
+        _waggonNo = waggonNo;
     }
 
     /**

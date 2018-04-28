@@ -1,5 +1,7 @@
 
-import java.util.*;
+package rangieren;
+
+import java.util.ArrayList;
 
 /**
  * 
@@ -16,12 +18,12 @@ public class Gleis {
     /**
      * 
      */
-    public ArrayList<Waggon> _waggons;
+    private ArrayList<Waggon> _waggons;
 
     /**
      * 
      */
-    public int _niedrigsteWaggonNo;
+    private int _niedrigsteWaggonNo;
    
     /**
      * 
@@ -32,6 +34,7 @@ public class Gleis {
 
     /**
      * 
+     * @param gleisTyp
      */
     public void Create(String gleisTyp) {
         _gleisTyp = gleisTyp;
@@ -42,21 +45,23 @@ public class Gleis {
      */
     public void waggonHinzufuegen(Waggon waggon) {
         // TODO implement here
+        _waggons.add(waggon);
     }
 
     /**
      * @return
      */
-    public List<Waggon> getWaggons() {
+    public ArrayList<Waggon> getWaggons() {
         // TODO implement here
-        return null;
+        return _waggons;
     }
 
     /**
      * @param index
+     * @return 
      */
-    public void getAndRemoveWaggon(int index) {
-        // TODO implement here
+    public Waggon getAndRemoveWaggon(int index) {
+        return _waggons.get(index);
     }
 
     /**

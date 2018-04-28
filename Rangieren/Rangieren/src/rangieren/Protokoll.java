@@ -1,5 +1,6 @@
+package rangieren;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * 
@@ -9,15 +10,30 @@ public class Protokoll {
 
     /**
      * Default constructor
+     * @param zuggleis
+     * @param rangiergleis
+     * @param abstellgleis
      */
-    public Protokoll() {
-        _aktionen = new ArrayList<Aktion>();
+    public Protokoll(Gleis zuggleis, Gleis rangiergleis, Gleis abstellgleis) {
+        _aktionen = new ArrayList<>();
+        
+        _abstellgleis = abstellgleis;
+        _rangiergleis = rangiergleis;
+        _zuggleis = zuggleis;
     }
 
+    private String buildGleisString(Gleis gleis)
+    {
+        StringBuilder builder = new StringBuilder();         
+        for(int i = gleis.getWaggons().size(); i >= 0;i--)
+           builder.append(gleis.getWaggons().get(i)).append((i == gleis.getWaggons().size()) ? " " : "");
+        return builder.toString();
+    }
     /**
      * 
      */
     private ArrayList<Aktion> _aktionen;
+    private Gleis _zuggleis, _rangiergleis, _abstellgleis;
 
     /**
      * @param aktion
@@ -41,14 +57,14 @@ public class Protokoll {
     private String aktionToString(Aktion aktion)
     {
         StringBuilder builder = new StringBuilder();
-        builder.append(" ").append(_aktionen.size()).append(" ");
+        builder.append(" ").append(_aktionen.size()+1).append(" ");
         builder.append(" ").append(aktion.getWaggonNo()).append(" ");
         builder.append(aktion.getVon().getGleisTyp());
         builder.append(aktion.getNach().getGleisTyp());
-        //builder.append(getWaggonListe(von))
-        
-        
-        return null;
+        builder.append(buildGleisString(_zuggleis));
+        builder.append(buildGleisString(_rangiergleis));
+        builder.append(buildGleisString(_abstellgleis));
+        return builder.toString();
     }
     
     private String GetKopfzeile()

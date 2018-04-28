@@ -1,6 +1,5 @@
 
-import java.util.*;
-
+package rangieren;
 /**
  * 
  * @author sirkpetzold
@@ -42,10 +41,10 @@ public class Aktion {
     }
 
     /**
-     * @param _von the _von to set
+     * @param _von the Gleis to set
      */
-    public void setVon(Gleis _von) {
-        this._von = _von;
+    public void setVon(Gleis von) {
+        this._von = von;
     }
 
     /**
@@ -56,10 +55,10 @@ public class Aktion {
     }
 
     /**
-     * @param _nach the _nach to set
+     * @param _ach the Gleis to set
      */
-    public void setNach(Gleis _nach) {
-        this._nach = _nach;
+    public void setNach(Gleis nach) {
+        this._nach = nach;
     }
 
     /**
@@ -72,7 +71,7 @@ public class Aktion {
     /**
      * @param _waggonNo the _waggonNo to set
      */
-    public void setWaggonNo(int _waggonNo) {
-        this._waggonNo = _waggonNo;
+    public void setWaggonNo(int waggonNo) {
+        this._waggonNo = waggonNo;
     }
 }
