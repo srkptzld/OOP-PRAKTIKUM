@@ -4,49 +4,43 @@ import java.util.*;
 
 /**
  * 
- * @author sirkpetzold
+ * @author funbold
  */
 public class Rangieren {
 
     /**
-     * Default constructor
-     */
-    public Rangieren() {
-    }
-
-    /**
-     * 
+     * Gleis auf welchem der später fertige Zug steht
      */
     private Gleis _zugGleis;
 
     /**
-     * 
+     * Gleis auf welchem der ungeordnete Zug steht
      */
     private Gleis _abstellGleis;
 
     /**
-     * 
+     * Rangiergleis
      */
     private Gleis _rangierGleis;
 
     /**
-     * 
+     * Protokoll
      */
     private Protokoll _protokoll;
-
-
-
-
-
-
+    
     /**
+     * Konstruktor
+     * 
      * @param waggons
      */
-    public void Create(ArrayList<Waggon> waggons) {
-        // TODO implement here
+    public Rangieren(ArrayList<Waggon> waggons) {
+        
+        
+        
     }
 
     /**
+     * 
      */
     public void run() {
         // TODO implement here
