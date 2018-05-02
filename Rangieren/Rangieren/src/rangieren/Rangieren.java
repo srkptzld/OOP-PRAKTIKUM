@@ -63,7 +63,8 @@ public class Rangieren {
     
         int anzahlWaggons = _abstellGleis.getWaggons().size();
         
-        for(int i=0; i <= anzahlWaggons; i++){
+        
+        while(_zugGleis.getWaggons().size() < anzahlWaggons){
             
             // Schritt 1
             _abstellGleis.berechneNiedrigsteWaggonNo();
@@ -82,7 +83,8 @@ public class Rangieren {
                     if(waggonsAbstellGleis.get(k).getWaggonNo() == _abstellGleis.getNiedrigsteWaggonNo()){
                         _protokoll.hinzfuegen(new Aktion(_abstellGleis, _zugGleis, _abstellGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         _zugGleis.waggonHinzufuegen(waggonsAbstellGleis.get(k));
-                        waggonsAbstellGleis.remove(k);                        
+                        waggonsAbstellGleis.remove(k);
+                        break;
                     }else{
                         _protokoll.hinzfuegen(new Aktion(_abstellGleis, _rangierGleis, waggonsAbstellGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         _rangierGleis.waggonHinzufuegen(waggonsAbstellGleis.get(k));
@@ -99,6 +101,7 @@ public class Rangieren {
                         _protokoll.hinzfuegen(new Aktion(_rangierGleis, _zugGleis, _rangierGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         _zugGleis.waggonHinzufuegen(waggonsRangierGleis.get(k));
                         waggonsRangierGleis.remove(k);
+                        break;
                     }else{
                         _protokoll.hinzfuegen(new Aktion(_rangierGleis, _abstellGleis, waggonsRangierGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         _abstellGleis.waggonHinzufuegen(waggonsRangierGleis.get(k));
