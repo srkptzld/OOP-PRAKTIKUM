@@ -73,9 +73,11 @@ public class Rangieren {
                 for(int k =_abstellGleis._waggons.size(); k > 0; k--){
                     
                     if(_abstellGleis._waggons.get(k).getWaggonNo() == _abstellGleis._niedrigsteWaggonNo){
+                        new Aktion(_abstellGleis, _zugGleis, _abstellGleis._niedrigsteWaggonNo);
                         _zugGleis._waggons.add(_abstellGleis._waggons.get(k));
-                        _abstellGleis._waggons.remove(k);
+                        _abstellGleis._waggons.remove(k);                        
                     }else{
+                        new Aktion(_abstellGleis, _rangierGleis, _abstellGleis._waggons.get(k).getWaggonNo());
                         _rangierGleis._waggons.add(_abstellGleis._waggons.get(k));
                         _abstellGleis._waggons.remove(k);
                     }                 
@@ -87,11 +89,15 @@ public class Rangieren {
                 for(int k =_rangierGleis._waggons.size(); k > 0; k--){
                     
                     if(_rangierGleis._waggons.get(k).getWaggonNo() == _rangierGleis._niedrigsteWaggonNo){
+                        new Aktion(_rangierGleis, _zugGleis, _rangierGleis._niedrigsteWaggonNo);
                         _zugGleis._waggons.add(_rangierGleis._waggons.get(k));
                         _rangierGleis._waggons.remove(k);
                     }else{
+                        new Aktion(_rangierGleis, _abstellGleis, _rangierGleis._waggons.get(k).getWaggonNo());
                         _abstellGleis._waggons.add(_rangierGleis._waggons.get(k));
-                        _rangierGleis._waggons.remove(k);                        
+                        _rangierGleis._waggons.remove(k);      
+                    }
+                }
             }            
         }  
     }
