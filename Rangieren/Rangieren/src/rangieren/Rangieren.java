@@ -40,6 +40,7 @@ public class Rangieren {
         _rangierGleis = new Gleis("rangierGleis");
         _protokoll = new Protokoll;
         
+        Collections.reverse(waggons);
         _abstellGleis._waggons = waggons;
         
     }
