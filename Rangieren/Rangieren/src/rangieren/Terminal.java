@@ -1,17 +1,23 @@
 package rangieren;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * 
  * @author sirkpetzold
  */
 public class Terminal {
+    
+    private ArrayList<Waggon> waggons;
 
     /**
-     * Default constructor
+     * 
      */
     public Terminal() {
+        
+        waggons = new ArrayList<Waggon>();
+        
     }
 
 
@@ -20,8 +26,41 @@ public class Terminal {
      * @return
      */
     public ArrayList<Waggon> Wagenreihenfolge() {
-        // TODO implement here
-        return null;
+        
+        boolean scanning = true;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Es wird nun die Waggon-Reihenfolge festgelegt.");
+        System.out.println("Geben Sie Zahlen von 1 bis 99 ein und bestätigen Sie diese mit ENTER");
+        System.out.println("Wenn Sie fertig sind, geben Sie 'fertig' ein und bestätigen Sie mit ENTER");
+        System.out.println("Für eine zufällige Reihenfolge aus 110 Waggons, geben Sie 'zufällig' ein.");
+        
+        while(scanning){
+        
+        String eingabe = scanner.nextLine();
+        
+            if(eingabe == "fertig"){           
+                scanning = false;           
+            }else if(Integer.parseInt(eingabe) < 100 && Integer.parseInt(eingabe) > 0){
+                waggons.add(new Waggon(Integer.parseInt(eingabe)));
+            }else if(eingabe == "zufällig"){
+                for(int i = 0; i < 120; i++){
+                    waggons.add(new Waggon((int)Math.random() * 99));
+                }
+                scanning = false;
+            }else{
+                System.out.println("Die Eingabe scheint fehlerhaft zu sein. Bitte überprüfen Sie diese.");
+            }
+        }
+        
+        return waggons;
+        
+    }
+        
+        
+        
+        
+
     }
 
 }
