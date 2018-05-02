@@ -36,7 +36,7 @@ public class Gleis {
             _waggons = new ArrayList<>();
         else
         _waggons = waggons;
-        _niedrigsteWaggonNo = 0; 
+        _niedrigsteWaggonNo = 999; 
     }
 
     /**

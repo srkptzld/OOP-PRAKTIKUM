@@ -69,36 +69,40 @@ public class Rangieren {
             _abstellGleis.niedrigsteWaggonNo();
             _rangierGleis.niedrigsteWaggonNo();
             
+            ArrayList<Waggon> waggonsAbstellGleis = _abstellGleis.getWaggons();
+            ArrayList<Waggon> waggonsRangierGleis = _rangierGleis.getWaggons();
+            ArrayList<Waggon> waggonsZugGleis = _zugGleis.getWaggons();
+            
             // Schritt 2
             if(_abstellGleis.getNiedrigsteWaggonNo() <= _rangierGleis.getNiedrigsteWaggonNo()){
                 
                 // Schritt 3
-                for(int k =_abstellGleis.getWaggons().size() - 1; k >= 0; k--){
+                for(int k = waggonsAbstellGleis.size() - 1; k >= 0; k--){
                     
-                    if(_abstellGleis.getWaggons().get(k).getWaggonNo() == _abstellGleis.getNiedrigsteWaggonNo()){
+                    if(waggonsAbstellGleis.get(k).getWaggonNo() == _abstellGleis.getNiedrigsteWaggonNo()){
                         _protokoll.hinzfuegen(new Aktion(_abstellGleis, _zugGleis, _abstellGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
-                        _zugGleis.getWaggons().add(_abstellGleis.getWaggons().get(k));
-                        _abstellGleis.getWaggons().remove(k);                        
+                        _zugGleis.waggonHinzufuegen(waggonsAbstellGleis.get(k));
+                        waggonsAbstellGleis.remove(k);                        
                     }else{
-                        _protokoll.hinzfuegen(new Aktion(_abstellGleis, _rangierGleis, _abstellGleis.getWaggons().get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
-                        _rangierGleis.getWaggons().add(_abstellGleis.getWaggons().get(k));
-                        _abstellGleis.getWaggons().remove(k);
+                        _protokoll.hinzfuegen(new Aktion(_abstellGleis, _rangierGleis, waggonsAbstellGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
+                        _rangierGleis.waggonHinzufuegen(waggonsAbstellGleis.get(k));
+                        waggonsAbstellGleis.remove(k);
                     }                 
                 }
                 
             }else{
                 
                 // Schritt 3
-                for(int k =_rangierGleis.getWaggons().size() - 1; k >= 0; k--){
+                for(int k = waggonsRangierGleis.size() - 1; k >= 0; k--){
                     
-                    if(_rangierGleis.getWaggons().get(k).getWaggonNo() == _rangierGleis.getNiedrigsteWaggonNo()){
+                    if(waggonsRangierGleis.get(k).getWaggonNo() == _rangierGleis.getNiedrigsteWaggonNo()){
                         _protokoll.hinzfuegen(new Aktion(_rangierGleis, _zugGleis, _rangierGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
-                        _zugGleis.getWaggons().add(_rangierGleis.getWaggons().get(k));
-                        _rangierGleis.getWaggons().remove(k);
+                        _zugGleis.waggonHinzufuegen(waggonsRangierGleis.get(k));
+                        waggonsRangierGleis.remove(k);
                     }else{
-                        _protokoll.hinzfuegen(new Aktion(_rangierGleis, _abstellGleis, _rangierGleis.getWaggons().get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
-                        _abstellGleis.getWaggons().add(_rangierGleis.getWaggons().get(k));
-                        _rangierGleis.getWaggons().remove(k);      
+                        _protokoll.hinzfuegen(new Aktion(_rangierGleis, _abstellGleis, waggonsRangierGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
+                        _abstellGleis.waggonHinzufuegen(waggonsRangierGleis.get(k));
+                        waggonsRangierGleis.remove(k);      
                     }
                 }
             }            
