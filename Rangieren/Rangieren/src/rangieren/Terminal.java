@@ -42,7 +42,7 @@ public class Terminal {
             if(eingabe.equals("fertig")){           
                 scanning = false;           
             }else if(eingabe.equals("zufall")){
-                for(int i = 0; i < 9; i++){
+                for(int i = 0; i < 10; i++){
                     waggons.add(new Waggon((int) (Math.random() * 99)));
                 }
                 scanning = false; 

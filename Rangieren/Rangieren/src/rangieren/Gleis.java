@@ -35,8 +35,8 @@ public class Gleis {
         if (waggons == null)
             _waggons = new ArrayList<>();
         else
-        _waggons = waggons;
-        _niedrigsteWaggonNo = 999; 
+            _waggons = waggons;
+        berechneNiedrigsteWaggonNo(); 
     }
 
     /**
@@ -45,6 +45,7 @@ public class Gleis {
     public void waggonHinzufuegen(Waggon waggon) {
         // TODO implement here
         _waggons.add(waggon);
+        berechneNiedrigsteWaggonNo();
     }
 
     /**
@@ -55,13 +56,6 @@ public class Gleis {
         return _waggons;
     }
 
-    /**
-     * @param index
-     * @return 
-     */
-    public Waggon getAndRemoveWaggon(int index) {
-        return _waggons.get(index);
-    }
 
     /**
      * @return the _gleisTyp
@@ -81,7 +75,7 @@ public class Gleis {
     /**
      * Legt die momentan niedrigste WaggonNo fest
      */
-    public void niedrigsteWaggonNo(){
+    public void berechneNiedrigsteWaggonNo(){
         
         for(int i = 0; i < _waggons.size(); i++){   
             if(_waggons.get(i).getWaggonNo() < _niedrigsteWaggonNo){

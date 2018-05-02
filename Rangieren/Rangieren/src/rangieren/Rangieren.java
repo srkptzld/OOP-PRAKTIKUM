@@ -66,8 +66,8 @@ public class Rangieren {
         for(int i=0; i <= anzahlWaggons; i++){
             
             // Schritt 1
-            _abstellGleis.niedrigsteWaggonNo();
-            _rangierGleis.niedrigsteWaggonNo();
+            _abstellGleis.berechneNiedrigsteWaggonNo();
+            _rangierGleis.berechneNiedrigsteWaggonNo();
             
             ArrayList<Waggon> waggonsAbstellGleis = _abstellGleis.getWaggons();
             ArrayList<Waggon> waggonsRangierGleis = _rangierGleis.getWaggons();

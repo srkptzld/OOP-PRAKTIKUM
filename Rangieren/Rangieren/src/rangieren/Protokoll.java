@@ -49,7 +49,7 @@ public class Protokoll {
     public void ausgabe() {
      
         System.out.println(GetKopfzeile());
-        for (int i = 0; i <= _aktionen.size(); i++){
+        for (int i = 0; i <= _aktionen.size() - 1; i++){
             String aktion = aktionToString(_aktionen.get(i), i);
             System.out.println(aktion);
         }
@@ -58,7 +58,7 @@ public class Protokoll {
     private String aktionToString(Aktion aktion, int index)
     {
         StringBuilder builder = new StringBuilder();
-        builder.append(" ").append(index).append(" | ");
+        builder.append(" ").append(index+1).append(" | ");
         builder.append(" ").append(aktion.getWaggonNo()).append(" | ");
         builder.append(" ").append(aktion.getVon().getGleisTyp()).append(" | ");
         builder.append(" ").append(aktion.getNach().getGleisTyp()).append(" | ");
