@@ -105,6 +105,15 @@ public class Rangieren {
         }  
     }
 
+    
+    /**
+     * 
+     */
+    public Protokoll getProtokoll(){
+        return _protokoll;
+    }
+    
+    
     /**
      * @return
      */
