@@ -34,21 +34,22 @@ public class Rangieren {
      * @param waggons
      */
     public Rangieren(ArrayList<Waggon> waggons) {
+          for(int i = 0, j = waggons.size() - 1; i < j; i++) {
+            waggons.add(i, waggons.remove(j));
+          }
+    
+        _zugGleis = new Gleis("zugGleis", null);
+        _rangierGleis = new Gleis("rangierGleis", null);
+        _abstellGleis = new Gleis("abstellGleis", waggons);
+        _protokoll = new Protokoll(_zugGleis, _rangierGleis, _abstellGleis);
         
-        _zugGleis = new Gleis("zugGleis");
-        _abstellGleis = new Gleis("abstellGleis");
-        _rangierGleis = new Gleis("rangierGleis");
-        _protokoll = new Protokoll;
-        
-        Collections.reverse(waggons);
-        _abstellGleis._waggons = waggons;
         
     }
 
     /**
      * Hauptfunktion des Programms in mehreren Schritten.
      * 
-     * 1. Erneuert die momentanen _niedrigsteWaggonNo-Werte der beiden Gleise.
+     * 1. Erneuert die momentanen getNiedrigsteWaggonNo()-Werte der beiden Gleise.
      * 
      * 2. Frägt per F-Abfrage ab, wo sich der momentan niedrigst nummerierte Waggon befindet
      *    und startet demnach eine der Schleifen.
@@ -59,7 +60,7 @@ public class Rangieren {
      */
     public void run() {
     
-        int anzahlWaggons = _abstellGleis._waggons.size();
+        int anzahlWaggons = _abstellGleis.getWaggons().size();
         
         for(int i=0; i <= anzahlWaggons; i++){
             
@@ -68,35 +69,35 @@ public class Rangieren {
             _rangierGleis.niedrigsteWaggonNo();
             
             // Schritt 2
-            if(_abstellGleis._niedrigsteWaggonNo <= _rangierGleis._niedrigsteWaggonNo){
+            if(_abstellGleis.getNiedrigsteWaggonNo() <= _rangierGleis.getNiedrigsteWaggonNo()){
                 
                 // Schritt 3
-                for(int k =_abstellGleis._waggons.size(); k > 0; k--){
+                for(int k =_abstellGleis.getWaggons().size() - 1; k >= 0; k--){
                     
-                    if(_abstellGleis._waggons.get(k).getWaggonNo() == _abstellGleis._niedrigsteWaggonNo){
-                        new Aktion(_abstellGleis, _zugGleis, _abstellGleis._niedrigsteWaggonNo);
-                        _zugGleis._waggons.add(_abstellGleis._waggons.get(k));
-                        _abstellGleis._waggons.remove(k);                        
+                    if(_abstellGleis.getWaggons().get(k).getWaggonNo() == _abstellGleis.getNiedrigsteWaggonNo()){
+                        new Aktion(_abstellGleis, _zugGleis, _abstellGleis.getNiedrigsteWaggonNo());
+                        _zugGleis.getWaggons().add(_abstellGleis.getWaggons().get(k));
+                        _abstellGleis.getWaggons().remove(k);                        
                     }else{
-                        new Aktion(_abstellGleis, _rangierGleis, _abstellGleis._waggons.get(k).getWaggonNo());
-                        _rangierGleis._waggons.add(_abstellGleis._waggons.get(k));
-                        _abstellGleis._waggons.remove(k);
+                        new Aktion(_abstellGleis, _rangierGleis, _abstellGleis.getWaggons().get(k).getWaggonNo());
+                        _rangierGleis.getWaggons().add(_abstellGleis.getWaggons().get(k));
+                        _abstellGleis.getWaggons().remove(k);
                     }                 
                 }
                 
             }else{
                 
                 // Schritt 3
-                for(int k =_rangierGleis._waggons.size(); k > 0; k--){
+                for(int k =_rangierGleis.getWaggons().size() - 1; k >= 0; k--){
                     
-                    if(_rangierGleis._waggons.get(k).getWaggonNo() == _rangierGleis._niedrigsteWaggonNo){
-                        new Aktion(_rangierGleis, _zugGleis, _rangierGleis._niedrigsteWaggonNo);
-                        _zugGleis._waggons.add(_rangierGleis._waggons.get(k));
-                        _rangierGleis._waggons.remove(k);
+                    if(_rangierGleis.getWaggons().get(k).getWaggonNo() == _rangierGleis.getNiedrigsteWaggonNo()){
+                        new Aktion(_rangierGleis, _zugGleis, _rangierGleis.getNiedrigsteWaggonNo());
+                        _zugGleis.getWaggons().add(_rangierGleis.getWaggons().get(k));
+                        _rangierGleis.getWaggons().remove(k);
                     }else{
-                        new Aktion(_rangierGleis, _abstellGleis, _rangierGleis._waggons.get(k).getWaggonNo());
-                        _abstellGleis._waggons.add(_rangierGleis._waggons.get(k));
-                        _rangierGleis._waggons.remove(k);      
+                        new Aktion(_rangierGleis, _abstellGleis, _rangierGleis.getWaggons().get(k).getWaggonNo());
+                        _abstellGleis.getWaggons().add(_rangierGleis.getWaggons().get(k));
+                        _rangierGleis.getWaggons().remove(k);      
                     }
                 }
             }            

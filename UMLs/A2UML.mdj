@@ -613,7 +613,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_waggons: ArrayList<Waggons>",
+											"text": "-_waggons: ArrayList<Waggons>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -642,7 +642,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_niedrigsteWaggonNo: Int",
+											"text": "-_niedrigsteWaggonNo: Int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2272,7 +2272,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_von: Gleis",
+											"text": "-_von: Gleis",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2301,7 +2301,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_nach: Gleis",
+											"text": "-_nach: Gleis",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2330,7 +2330,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+_waggonNo: Int",
+											"text": "-_waggonNo: Int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5553,7 +5553,7 @@
 								"$ref": "AAAAAAFjAl6h6MG2bgQ="
 							},
 							"name": "_waggons",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "ArrayList<Waggons>",
@@ -5571,7 +5571,7 @@
 								"$ref": "AAAAAAFjAl6h6MG2bgQ="
 							},
 							"name": "_niedrigsteWaggonNo",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Int",
@@ -6253,7 +6253,7 @@
 							"isDerived": false
 						}
 					],
-					"visibility": "public",
+					"visibility": "private",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -6262,7 +6262,7 @@
 								"$ref": "AAAAAAFjAm4Mg8Lwtxc="
 							},
 							"name": "_von",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -6282,7 +6282,7 @@
 								"$ref": "AAAAAAFjAm4Mg8Lwtxc="
 							},
 							"name": "_nach",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": {
@@ -6302,7 +6302,7 @@
 								"$ref": "AAAAAAFjAm4Mg8Lwtxc="
 							},
 							"name": "_waggonNo",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "Int",

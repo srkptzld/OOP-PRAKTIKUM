@@ -16,7 +16,7 @@ public class Terminal {
      */
     public Terminal() {
         
-        waggons = new ArrayList<Waggon>();
+        waggons = new ArrayList<>();
         
     }
 
@@ -31,7 +31,7 @@ public class Terminal {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Es wird nun die Waggon-Reihenfolge festgelegt.");
-        System.out.println("Geben Sie Zahlen von 1 bis 99 ein und bestätigen Sie diese mit ENTER");
+        System.out.println("Geben Sie Zahlen zwischen 1 und 99 ein und bestätigen Sie diese mit ENTER");
         System.out.println("Wenn Sie fertig sind, geben Sie 'fertig' ein und bestätigen Sie mit ENTER");
         System.out.println("Für eine zufällige Reihenfolge aus 110 Waggons, geben Sie 'zufällig' ein.");
         
@@ -39,15 +39,16 @@ public class Terminal {
         
         String eingabe = scanner.nextLine();
         
-            if(eingabe == "fertig"){           
+            if("fertig".equals(eingabe)){           
                 scanning = false;           
-            }else if(Integer.parseInt(eingabe) < 100 && Integer.parseInt(eingabe) > 0){
-                waggons.add(new Waggon(Integer.parseInt(eingabe)));
-            }else if(eingabe == "zufällig"){
-                for(int i = 0; i < 120; i++){
-                    waggons.add(new Waggon((int)Math.random() * 99));
+            }else if("zufällig".equals(eingabe)){
+                for(int i = 0; i < 119; i++){
+                    waggons.add(new Waggon((int) (Math.random() * 99)));
                 }
-                scanning = false;
+                scanning = false; 
+            }
+            else if(Integer.parseInt(eingabe) < 100 && Integer.parseInt(eingabe) > 0){
+                waggons.add(new Waggon(Integer.parseInt(eingabe)));
             }else{
                 System.out.println("Die Eingabe scheint fehlerhaft zu sein. Bitte überprüfen Sie diese.");
             }
@@ -55,12 +56,6 @@ public class Terminal {
         
         return waggons;
         
-    }
-        
-        
-        
-        
-
     }
 
 }

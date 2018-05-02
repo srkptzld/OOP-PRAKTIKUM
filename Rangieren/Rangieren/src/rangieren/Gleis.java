@@ -12,12 +12,12 @@ public class Gleis {
     /**
      * 
      */
-    public ArrayList<Waggon> _waggons;
+    private ArrayList<Waggon> _waggons;
 
     /**
      * 
      */
-    public int _niedrigsteWaggonNo;
+    private int _niedrigsteWaggonNo;
    
     /**
      * 
@@ -27,9 +27,13 @@ public class Gleis {
     /**
      * Default constructor
      */
-    public Gleis(String gleisTyp) {
+    public Gleis(String gleisTyp, ArrayList<Waggon> waggons) {
         
         _gleisTyp = gleisTyp;
+        if (waggons == null)
+            _waggons = new ArrayList<>();
+        else
+        _waggons = waggons;
         _niedrigsteWaggonNo = 0; 
     }
 
@@ -62,6 +66,10 @@ public class Gleis {
      */
     public String getGleisTyp() {
         return _gleisTyp;
+    }
+    
+    public int getNiedrigsteWaggonNo(){
+        return _niedrigsteWaggonNo;
     }
 
     /**
