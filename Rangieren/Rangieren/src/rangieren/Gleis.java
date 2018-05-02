@@ -26,6 +26,8 @@ public class Gleis {
     
     /**
      * Default constructor
+     * @param gleisTyp
+     * @param waggons
      */
     public Gleis(String gleisTyp, ArrayList<Waggon> waggons) {
         
@@ -68,6 +70,10 @@ public class Gleis {
         return _gleisTyp;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getNiedrigsteWaggonNo(){
         return _niedrigsteWaggonNo;
     }

@@ -1,5 +1,8 @@
 
 package rangieren;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author sirkpetzold
@@ -20,17 +23,38 @@ public class Aktion {
      * Waggon Nummer
      */
     private int _waggonNo;
+    
+    private String _zugGleisWaggons;
+    private String _abstellGleisWaggons;
+    private String _rangierGleisWaggons;
 
 
     /**
      * @param von 
      * @param nach 
      * @param waggonNo
+     * @param zugGleis
+     * @param abstellGleis
+     * @param rangierGleis
      */
-    public Aktion(Gleis von, Gleis nach, int waggonNo) {
+    public Aktion(Gleis von, Gleis nach, int waggonNo, Gleis zugGleis, Gleis abstellGleis,Gleis rangierGleis) {
         _von = von;
         _nach = nach;
         _waggonNo = waggonNo;
+        _zugGleisWaggons = buildGleisString(zugGleis);
+        _abstellGleisWaggons = buildGleisString(abstellGleis);
+        _rangierGleisWaggons = buildGleisString(rangierGleis);
+        
+    }
+    
+    
+        private String buildGleisString(Gleis gleis)
+    {
+        StringBuilder builder = new StringBuilder();   
+        ArrayList<Waggon> waggons = gleis.getWaggons();
+        for(int i = 0; i <= waggons.size() - 1;i++)
+           builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
+        return builder.toString();
     }
 
     /**
@@ -39,9 +63,17 @@ public class Aktion {
     public Gleis getVon() {
         return _von;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public String getWaggonStrings(){
+        return _zugGleisWaggons + " | " + _rangierGleisWaggons +  " | " + _abstellGleisWaggons;
+    }
 
     /**
-     * @param _von the Gleis to set
+     * @param von
      */
     public void setVon(Gleis von) {
         this._von = von;

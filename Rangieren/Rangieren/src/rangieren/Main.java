@@ -16,7 +16,6 @@ public class Main {
         ArrayList<Waggon> waggons = terminal.Wagenreihenfolge();
         Rangieren rangieren = new Rangieren(waggons);
         rangieren.run();
-        
     }
     
 }
