@@ -27,7 +27,10 @@ public class Gleis {
     /**
      * Default constructor
      */
-    public Gleis() {
+    public Gleis(String gleisTyp) {
+        
+        _gleisTyp = gleisTyp;
+                
     }
 
     /**
