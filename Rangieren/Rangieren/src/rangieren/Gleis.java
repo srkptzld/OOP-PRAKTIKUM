@@ -12,7 +12,7 @@ public class Gleis {
     /**
      * 
      */
-    private ArrayList<Waggon> _waggons;
+    public ArrayList<Waggon> _waggons;
 
     /**
      * 
@@ -31,14 +31,6 @@ public class Gleis {
         
         _gleisTyp = gleisTyp;
                 
-    }
-
-    /**
-     * 
-     * @param gleisTyp
-     */
-    public void Create(String gleisTyp) {
-        _gleisTyp = gleisTyp;
     }
 
     /**
