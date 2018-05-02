@@ -17,7 +17,7 @@ public class Gleis {
     /**
      * 
      */
-    private int _niedrigsteWaggonNo;
+    public int _niedrigsteWaggonNo;
    
     /**
      * 
@@ -30,7 +30,7 @@ public class Gleis {
     public Gleis(String gleisTyp) {
         
         _gleisTyp = gleisTyp;
-                
+        _niedrigsteWaggonNo = 0; 
     }
 
     /**
@@ -64,4 +64,16 @@ public class Gleis {
         return _gleisTyp;
     }
 
+    /**
+     * Legt die momentan niedrigste WaggonNo fest
+     */
+    public void niedrigsteWaggonNo(){
+        
+        for(int i = 0; i <= _waggons.size(); i++){   
+            if(_waggons.get(i).getWaggonNo() < _niedrigsteWaggonNo){
+                _niedrigsteWaggonNo = _waggons.get(i).getWaggonNo();
+            }
+        }
+        
+    }
 }
