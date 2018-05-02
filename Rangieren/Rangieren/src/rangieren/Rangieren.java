@@ -34,6 +34,7 @@ public class Rangieren {
      * @param waggons
      */
     public Rangieren(ArrayList<Waggon> waggons) {
+          
           for(int i = 0, j = waggons.size() - 1; i < j; i++) {
             waggons.add(i, waggons.remove(j));
           }
