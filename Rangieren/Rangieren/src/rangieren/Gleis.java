@@ -10,12 +10,6 @@ import java.util.ArrayList;
 public class Gleis {
 
     /**
-     * Default constructor
-     */
-    public Gleis() {
-    }
-
-    /**
      * 
      */
     private ArrayList<Waggon> _waggons;
@@ -29,8 +23,12 @@ public class Gleis {
      * 
      */ 
     private String _gleisTyp;
-
-
+    
+    /**
+     * Default constructor
+     */
+    public Gleis() {
+    }
 
     /**
      * 
