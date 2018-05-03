@@ -23,8 +23,6 @@ public class Terminal {
         
     }
 
-
-
     /**
      * Lässt den Benutzer mittels Eingabe entweder einzelne, selbstgewählte Waggonnummern einspeisen
      * oder eine gewählte Menge zufälliger Waggonnummern generieren.
