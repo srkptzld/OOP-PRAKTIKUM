@@ -53,10 +53,10 @@ private String buildGleisString(Gleis gleis, boolean reverseSort)
         ArrayList<Waggon> waggons = gleis.getWaggons();
         if (!reverseSort)
             for(int i = 0; i <= waggons.size() - 1;i++)
-           builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
+                builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
         else
             for(int i = waggons.size() - 1; i >= 0 ;i--)
-           builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
+                builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
         return builder.toString();
     }
 

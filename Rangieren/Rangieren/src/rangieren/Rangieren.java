@@ -62,7 +62,7 @@ public class Rangieren {
             ArrayList<Waggon> waggonsAbstellGleis = _abstellGleis.getWaggons();
             ArrayList<Waggon> waggonsRangierGleis = _rangierGleis.getWaggons();
             ArrayList<Waggon> waggonsZugGleis = _zugGleis.getWaggons();
-
+            int waggonNo;
             // Schritt 2
             if (_abstellGleis.getNiedrigsteWaggonNo() <= _rangierGleis.getNiedrigsteWaggonNo()) {
                 
@@ -74,9 +74,10 @@ public class Rangieren {
                         _protokoll.hinzfuegen(new Aktion(_abstellGleis, _zugGleis, _abstellGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         break;
                     } else {
-                        _protokoll.hinzfuegen(new Aktion(_abstellGleis, _rangierGleis, waggonsAbstellGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
+                        waggonNo = waggonsAbstellGleis.get(k).getWaggonNo();
                         _rangierGleis.waggonHinzufuegen(waggonsAbstellGleis.get(k));
                         waggonsAbstellGleis.remove(k);
+                        _protokoll.hinzfuegen(new Aktion(_abstellGleis, _rangierGleis, waggonNo, _zugGleis, _abstellGleis, _rangierGleis));
                     }
                 }
                 
@@ -92,9 +93,11 @@ public class Rangieren {
                         _protokoll.hinzfuegen(new Aktion(_rangierGleis, _zugGleis, _rangierGleis.getNiedrigsteWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
                         break;
                     } else {
-                        _protokoll.hinzfuegen(new Aktion(_rangierGleis, _abstellGleis, waggonsRangierGleis.get(k).getWaggonNo(), _zugGleis, _abstellGleis, _rangierGleis));
+                        waggonNo = waggonsRangierGleis.get(k).getWaggonNo();
                         _abstellGleis.waggonHinzufuegen(waggonsRangierGleis.get(k));
                         waggonsRangierGleis.remove(k);
+                    _protokoll.hinzfuegen(new Aktion(_rangierGleis, _abstellGleis, waggonNo, _zugGleis, _abstellGleis, _rangierGleis));
+                        
                     }
                 }
             }

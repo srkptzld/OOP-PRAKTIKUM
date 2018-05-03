@@ -78,7 +78,7 @@ public class Gleis {
      */
     public void berechneNiedrigsteWaggonNo() {
 
-        _niedrigsteWaggonNo = 999;
+        _niedrigsteWaggonNo = Integer.MAX_VALUE;
 
         for (int i = 0; i < _waggons.size(); i++) {
             if (_waggons.get(i).getWaggonNo() < _niedrigsteWaggonNo) {
