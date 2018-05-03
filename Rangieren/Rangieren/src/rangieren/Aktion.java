@@ -4,7 +4,7 @@ package rangieren;
 import java.util.ArrayList;
 
 /**
- * 
+ * Datenhaltestruktur für das Wechseln des Gleises
  * @author sirkpetzold
  */
 public class Aktion {
@@ -41,17 +41,21 @@ public class Aktion {
         _von = von.getGleisTyp();
         _nach = nach.getGleisTyp();
         _waggonNo = Integer.toString(waggonNo);
-        _zugGleisWaggons = buildGleisString(zugGleis);
-        _abstellGleisWaggons = buildGleisString(abstellGleis);
-        _rangierGleisWaggons = buildGleisString(rangierGleis);
+        _zugGleisWaggons = buildGleisString(zugGleis, false);
+        _abstellGleisWaggons = buildGleisString(abstellGleis, true);
+        _rangierGleisWaggons = buildGleisString(rangierGleis, true);
         
     }
     
-private String buildGleisString(Gleis gleis)
+private String buildGleisString(Gleis gleis, boolean reverseSort)
     {
         StringBuilder builder = new StringBuilder();   
         ArrayList<Waggon> waggons = gleis.getWaggons();
-        for(int i = 0; i <= waggons.size() - 1;i++)
+        if (!reverseSort)
+            for(int i = 0; i <= waggons.size() - 1;i++)
+           builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
+        else
+            for(int i = waggons.size() - 1; i >= 0 ;i--)
            builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
         return builder.toString();
     }
@@ -67,8 +71,10 @@ private String buildGleisString(Gleis gleis)
      *
      * @return
      */
-    public String getWaggonStrings(){
-        return _zugGleisWaggons + " | " + _rangierGleisWaggons +  " | " + _abstellGleisWaggons;
+    public String getWaggonStrings(Integer spaltenBreite){
+        return String.format("%" + spaltenBreite + "s", _zugGleisWaggons) + " | " + 
+                String.format("%" + spaltenBreite + "s", _rangierGleisWaggons) + 
+                " | " + String.format("%" + spaltenBreite + "s", _abstellGleisWaggons);
     }
 
     /**

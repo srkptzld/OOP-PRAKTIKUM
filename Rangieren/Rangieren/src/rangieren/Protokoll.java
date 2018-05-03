@@ -8,6 +8,10 @@ import java.util.ArrayList;
  */
 public class Protokoll {
 
+    private ArrayList<Aktion> _aktionen;
+    private Gleis _zuggleis, _rangiergleis, _abstellgleis;
+    private Integer _spaltenBreite;
+
     /**
      * Default constructor
      * @param zuggleis
@@ -20,6 +24,7 @@ public class Protokoll {
         _abstellgleis = abstellgleis;
         _rangiergleis = rangiergleis;
         _zuggleis = zuggleis;
+        _spaltenBreite = abstellgleis.getWaggons().size() * 3;
     }
 
     private String buildGleisString(Gleis gleis)
@@ -30,11 +35,6 @@ public class Protokoll {
            builder.append(waggons.get(i).getWaggonNo()).append((i == waggons.size()) ? " |" : " ");
         return builder.toString();
     }
-    /**
-     * 
-     */
-    private ArrayList<Aktion> _aktionen;
-    private Gleis _zuggleis, _rangiergleis, _abstellgleis;
 
     /**
      * @param aktion
@@ -58,16 +58,21 @@ public class Protokoll {
     private String aktionToString(Aktion aktion, int index)
     {
         StringBuilder builder = new StringBuilder();
-        builder.append(" ").append(index+1).append(" | ");
-        builder.append(" ").append(aktion.getWaggonNo()).append(" | ");
-        builder.append(" ").append(aktion.getVon()).append(" | ");
-        builder.append(" ").append(aktion.getNach()).append(" | ");
-        builder.append(" ").append(aktion.getWaggonStrings());
+        builder.append(" ").append(String.format("%5d",index+1)).append(" | ");
+        builder.append(" ").append(String.format("%5s",aktion.getWaggonNo()) ).append(" | ");
+        builder.append(" ").append(String.format("%15s",aktion.getVon())).append(" | ");
+        builder.append(" ").append(String.format("%15s",aktion.getNach())).append(" | ");
+        builder.append(" ").append(aktion.getWaggonStrings(_spaltenBreite));
         return builder.toString();
     }
     
     private String GetKopfzeile()
     {
-        return "Aktion | Waggon |    von     |    nach    |  Zuggleis | Rangiergleis | Abstellgleis";
+        return "Aktion | Waggon | " + 
+                String.format("%16s","von") + " |  "+
+                String.format("%15s","nach") +" |  " + 
+                String.format("%" + _spaltenBreite + "s","Zuggleis") + " | " +  
+                String.format("%" + _spaltenBreite + "s","Rangiergleis") + " | " + 
+                String.format("%" + _spaltenBreite + "s", "Abstellgleis");
     }   
 }
