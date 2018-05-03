@@ -60,8 +60,8 @@ public class Protokoll {
         StringBuilder builder = new StringBuilder();
         builder.append(" ").append(index+1).append(" | ");
         builder.append(" ").append(aktion.getWaggonNo()).append(" | ");
-        builder.append(" ").append(aktion.getVon().getGleisTyp()).append(" | ");
-        builder.append(" ").append(aktion.getNach().getGleisTyp()).append(" | ");
+        builder.append(" ").append(aktion.getVon()).append(" | ");
+        builder.append(" ").append(aktion.getNach()).append(" | ");
         builder.append(" ").append(aktion.getWaggonStrings());
         return builder.toString();
     }
