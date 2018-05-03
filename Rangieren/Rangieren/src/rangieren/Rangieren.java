@@ -3,34 +3,22 @@ package rangieren;
 import java.util.*;
 
 /**
- *
+ * Die Klasse Rangieren enthält die Hauptmethode des Programms,
+ * welche den ungeordneten Zug in geordneter Reihenfolge auf das Zuggleis rangiert. 
+ * 
  * @author funbold
  */
 public class Rangieren {
 
-    /**
-     * Gleis auf welchem der später fertige Zug steht
-     */
+   
     private Gleis _zugGleis;
-
-    /**
-     * Gleis auf welchem der ungeordnete Zug steht
-     */
     private Gleis _abstellGleis;
-
-    /**
-     * Rangiergleis
-     */
     private Gleis _rangierGleis;
-
-    /**
-     * Protokoll
-     */
     private Protokoll _protokoll;
 
     /**
      * Konstruktor
-     *
+     * 
      * @param waggons
      */
     public Rangieren(ArrayList<Waggon> waggons) {
@@ -77,6 +65,7 @@ public class Rangieren {
 
             // Schritt 2
             if (_abstellGleis.getNiedrigsteWaggonNo() <= _rangierGleis.getNiedrigsteWaggonNo()) {
+                
                 // Schritt 3
                 for (int k = waggonsAbstellGleis.size() - 1; k >= 0; k--) {
                     if (waggonsAbstellGleis.get(k).getWaggonNo() == _abstellGleis.getNiedrigsteWaggonNo()) {
@@ -90,7 +79,8 @@ public class Rangieren {
                         waggonsAbstellGleis.remove(k);
                     }
                 }
-
+                
+            // Schritt 2
             } else {
 
                 // Schritt 3
@@ -114,22 +104,6 @@ public class Rangieren {
         }
 
         _protokoll.ausgabe();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Protokoll getProtokoll() {
-        return _protokoll;
-    }
-
-    /**
-     * @return
-     */
-    public Aktion naechsteAktion() {
-        // TODO implement here
-        return null;
     }
 
 }
