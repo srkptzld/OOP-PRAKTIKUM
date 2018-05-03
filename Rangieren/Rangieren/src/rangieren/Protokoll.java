@@ -37,6 +37,7 @@ public class Protokoll {
     }
 
     /**
+     * Eine Aktion dem Protokoll hinzufügen
      * @param aktion
      */
     public void hinzfuegen(Aktion aktion) {
@@ -45,6 +46,7 @@ public class Protokoll {
     }
 
     /**
+     * Ausgeben des Protokolls
      */
     public void ausgabe() {
      

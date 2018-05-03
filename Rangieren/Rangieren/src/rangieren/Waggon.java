@@ -12,6 +12,7 @@ public class Waggon {
 
 
     /**
+     * Konstruktor
      * @param waggonNo
      */
     public Waggon(int waggonNo) {
@@ -20,6 +21,7 @@ public class Waggon {
     }
 
     /**
+     * Gibt WaggonNummer zurück
      * @return
      */
     public int getWaggonNo() {

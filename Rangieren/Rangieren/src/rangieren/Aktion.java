@@ -68,7 +68,8 @@ private String buildGleisString(Gleis gleis, boolean reverseSort)
     }
     
     /**
-     *
+     * Gibt String mit Waggons zurück
+     * @param spaltenBreite
      * @return
      */
     public String getWaggonStrings(Integer spaltenBreite){
@@ -90,11 +91,5 @@ private String buildGleisString(Gleis gleis, boolean reverseSort)
     public String getWaggonNo() {
         return _waggonNo;
     }
-
-    /**
-     * @param waggonNo the _waggonNo to set
-     */
-    public void setWaggonNo(String waggonNo) {
-        this._waggonNo = waggonNo;
-    }
+    
 }
