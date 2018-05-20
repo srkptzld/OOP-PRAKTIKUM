@@ -52,16 +52,15 @@ public class Rangieren {
         int anzahlWaggons = _abstellGleis.getWaggons().size();
 
         while (_zugGleis.getWaggons().size() <= anzahlWaggons) {
-            if (_zugGleis.getWaggons().size() == anzahlWaggons) {
+            if (_zugGleis.getWaggons().size() == anzahlWaggons) 
                 break;
-            }
+            
             // Schritt 1
             _abstellGleis.berechneNiedrigsteWaggonNo();
             _rangierGleis.berechneNiedrigsteWaggonNo();
 
             ArrayList<Waggon> waggonsAbstellGleis = _abstellGleis.getWaggons();
             ArrayList<Waggon> waggonsRangierGleis = _rangierGleis.getWaggons();
-            ArrayList<Waggon> waggonsZugGleis = _zugGleis.getWaggons();
             int waggonNo;
             // Schritt 2
             if (_abstellGleis.getNiedrigsteWaggonNo() <= _rangierGleis.getNiedrigsteWaggonNo()) {
