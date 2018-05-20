@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Eingabe implements IConverter {
+public class Eingabe  {
 
     /**
      * Default constructor
@@ -16,9 +16,9 @@ public class Eingabe implements IConverter {
     /**
      * @return
      */
-    public IConverter Run() {
+    public void Run() {
         // TODO implement here
-        return null;
+       
     }
 
     /**
