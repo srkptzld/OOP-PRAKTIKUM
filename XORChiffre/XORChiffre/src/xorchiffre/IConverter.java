@@ -1,4 +1,4 @@
-
+package xorchiffre;
 import java.util.*;
 
 /**

@@ -63,35 +63,19 @@ public class Decryptor implements IConverter {
     
      private String DecryptXOREng(byte[] chiffreNumberArray, String keyText)
         {
-            //Hier werden wir den entschlüsselten Text speichern
             String plainText;
- 
-            //Um die AdjustKeyLength()-Methode u benutzen müssen wir die Länge des Klartextes
-            //aus der Länge des Chiffre-Array auslesen. Dazu erstellen wir ein string-Array
-            //mit der Länge des Chiffre-Array.
             String[] cipher = new String[chiffreNumberArray.length];
- 
-            //Diese Methode benutzen wir um die Lägne des Schlüsseltextes
-            //an die des Klartextes anzupassen.
-            keyText = AdjustKeyLength(cipher.toString(), keyText);
- 
-            //Mit diesem Befehl zaubern wir aus dem Schlüsseltext ein array,
-            //welches die Indizes der ASCII Zeichen aus dem Schlüsseltext enthält.
+
+            keyText = AdjustKeyLength(Arrays.toString(cipher), keyText);
+
             byte[] binaryKeyText = keyText.getBytes();
- 
-            //Nun iterieren wir durch jeden Eintrag im Chiffre.
+
+            //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
             for (int i = 0; i < chiffreNumberArray.length; i++)
-            {
-                //Mit dem Befehl '^' entschlüsseln wir jeden Eintrag im Chiffre,
-                //mit dem entsprechenden Eintrag des Schlüsseltextes.
                 chiffreNumberArray[i] ^= binaryKeyText[i];
- 
-            }
- 
-            //Hier wandeln wir jeden Eintrag im Chiffre-Array von Zahl nach ASCII Zeichen.
+
             plainText = Arrays.toString(chiffreNumberArray);
- 
-            //Unser Rückgabewert ist der entschlüsselte Klartext.
+
             return plainText;
         }
 
