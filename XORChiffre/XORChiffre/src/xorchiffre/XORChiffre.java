@@ -16,6 +16,7 @@ public class XORChiffre {
         
         ArrayList<String> test = new ArrayList<>();
         test.add("Hallo ich bin Sirk");
+        test.add("Hallo ich bin Sirk");
         Encryptor enc = new Encryptor(421, 54773, 259200, 3, test);
         enc.convert();
         System.out.println(enc._ergebnis);
