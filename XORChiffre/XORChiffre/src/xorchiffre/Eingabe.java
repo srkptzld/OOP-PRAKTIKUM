@@ -19,31 +19,32 @@ public class Eingabe  {
      */
     public IConverter Run() {
         
-        ArrayList<Double> parameter = readABM();
-        int _a = parameter.get(0);
-        int _b = parameter.get(1);
-        int _m = parameter.get(2);
+        ArrayList<Integer> parameter = readABM();
+       // int _a = parameter.get(0);
+        //int _b = parameter.get(1);
+       // int _m = parameter.get(2);
         
-        Integer _key = readKey();
-        
-        Boolean _type = readType();
-        
-        String _text;
-        
-        if(_type = false){
-            Decryptor xorchiffre = new Decryptor(_a,_b,_m,_key,_text);
-        }else if(_type = true){
-            Encryptor xorchiffre = new Encryptor(_a,_b,_m,_key,_text);
-        }               
-       return xorchiffre;
+//        Integer _key = readKey();
+//        
+//        Boolean _type = readType();
+//        
+//        String _text;
+//        
+//        if(_type = false){
+//            Decryptor xorchiffre = new Decryptor(_a,_b,_m,_key,_text);
+//        }else if(_type = true){
+//            Encryptor xorchiffre = new Encryptor(_a,_b,_m,_key,_text);
+//        }               
+//       return xorchiffre;
+return null;
     }
 
     /**
      * @return
      */
-    private ArrayList<Double> readABM() {
+    private ArrayList<Integer> readABM() {
         
-        ArrayList<Int> parameter = new ArrayList<Int>();
+        ArrayList<Integer> parameter = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int reihenfolge = 0;
         
