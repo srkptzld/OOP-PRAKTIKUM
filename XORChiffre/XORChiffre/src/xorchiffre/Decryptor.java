@@ -8,97 +8,92 @@ import java.util.*;
  * 
  */
 public class Decryptor implements IConverter {
-
     /**
-     * Default constructor
+     * 
      */
-    public Decryptor() {
-    }
+    private int _a;
 
     /**
      * 
      */
-    private Double a;
+    private int _b;
 
     /**
      * 
      */
-    private Double b;
+    private int _m;
 
     /**
      * 
      */
-    private Double m;
+    private int _key;
 
     /**
      * 
      */
-    private int key;
+    private ArrayList<byte[]> _text;
 
     /**
      * 
      */
-    private ArrayList<Byte> text;
+    public ArrayList<String> _ergebnis;
 
-    /**
-     * 
-     */
-    public ArrayList<String> ergebnis;
-
-    /**
-     * 
-     */
-    private File file;
 
     /**
      * @param a 
      * @param b 
      * @param m 
      * @param key 
-     * @param text
+     * @param encryptedText
      */
-    public void Create(Double a, Double b, Double m, int key, ArrayList<String> text) {
-        // TODO implement here
+    public Decryptor(int a, int b, int m, int key, ArrayList<byte[]> encryptedText) {
+        _a = a;
+        _b = b;
+        _m = m;
+        _key = key;
+        _text = encryptedText; 
+        _ergebnis = new ArrayList<>();
     }
     
-     private String DecryptXOREng(byte[] chiffreNumberArray, String keyText)
+     private String DecryptXOREng(byte[] chiffreNumberArray, byte[] keyText)
+    {
+        String plainText = "";
+
+        //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
+        for (int i = 0; i < chiffreNumberArray.length - 1; i++)
+            chiffreNumberArray[i] ^= keyText[i];
+
+        for (int i = 0; i <= chiffreNumberArray.length - 1; i++)
         {
-            String plainText;
-            String[] cipher = new String[chiffreNumberArray.length];
-
-            keyText = AdjustKeyLength(Arrays.toString(cipher), keyText);
-
-            byte[] binaryKeyText = keyText.getBytes();
-
-            //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
-            for (int i = 0; i < chiffreNumberArray.length; i++)
-                chiffreNumberArray[i] ^= binaryKeyText[i];
-
-            plainText = Arrays.toString(chiffreNumberArray);
-
-            return plainText;
+            plainText += String.valueOf((char)chiffreNumberArray[i]);
         }
+
+        return plainText;
+    }
 
     /**
      * 
      */
-    public void Convert() {
-        // TODO implement here
+    @Override
+    public void convert() {
+        byte[] seq;
+        for (int i = 0; i <= _text.size() - 1; i++){
+            seq = buildDecryptionKeySequence(_text.get(i).length);
+            
+           String bla = DecryptXOREng(_text.get(i), seq);
+           _ergebnis.add(bla);
+        }
     }
 
-    @Override
-    public String AdjustKeyLength(String text,String keystring)
-        {
-            StringBuilder key = new StringBuilder(keystring);
- 
-            //Solange der Schlüsseltext kürzer als der Klartext ist, wird er erweiter.
-            while(text.length() > key.length())
-            {
-                key.append(keystring);
-            }
- 
-            //Gibt den angepassten Schlüsseltext zurück.
-            return key.toString();
+    private byte[] buildDecryptionKeySequence(int sequenceLength){
+        byte[] sequence = new byte[sequenceLength];
+        
+        for (int i = 0; i<= sequenceLength - 1; i++){
+            _key = (_a * _key + _b) % _m;
+            sequence[i] = (byte)_key;
         }
+        
+        return sequence;
+    }
 
 }

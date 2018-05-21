@@ -11,17 +11,17 @@ public class Encryptor implements IConverter {
     /**
      * 
      */
-    private Double _a;
+    private int _a;
 
     /**
      * 
      */
-    private Double _b;
+    private int _b;
 
     /**
      * 
      */
-    private Double _m;
+    private int _m;
 
     /**
      * 
@@ -36,12 +36,7 @@ public class Encryptor implements IConverter {
     /**
      * 
      */
-    public ArrayList<Byte> _ergebnis;
-
-    /**
-     * 
-     */
-    private File _file;
+    public ArrayList<byte[]> _ergebnis;
 
     /**
      * @param a 
@@ -50,46 +45,53 @@ public class Encryptor implements IConverter {
      * @param key 
      * @param text
      */
-    public Encryptor(Double a, Double b, Double m, Integer key, ArrayList<String> text) {
+    public Encryptor(int a, int b, int m, Integer key, ArrayList<String> text) {
         _a = a;
         _b = b;
         _m = m;
         _key = key;
-        _text = text;        
+        _text = text;       
+        _ergebnis = new ArrayList<>();
     }
 
-    // Verschlüsselt den plainText mit dem keyText
-    private String EncryptString(String plainText, String keyText)
+    // Verschlüsselt den plainText mit dem keySequence
+    private byte[] EncryptString(String plainText, byte[] keySequence)
     {
-        keyText = AdjustKeyLength(plainText,keyText);
+        //keySequence = adjustKeyLength(plainText,keySequence);
 
         byte[] binaryPlainText = plainText.getBytes();
 
-        byte[] binaryKeyText = keyText.getBytes();
-
         //Nun iterieren wir durch jedes Zeichen im Klartext und verschlüsseln den Klartextbuchstaben
-        for(int i = 0;i<plainText.length();i++)
-            binaryPlainText[i] ^=  binaryKeyText[i];
+        for(int i = 0;i<plainText.length() - 1;i++)
+            binaryPlainText[i] ^=  keySequence[i];
 
-        return Arrays.toString(binaryPlainText);
+        return binaryPlainText;
     }
+
     
-    public String AdjustKeyLength(String text,String keystring)
-        {
-            StringBuilder key = new StringBuilder(keystring);
- 
-            //Solange der Schlüsseltext kürzer als der Klartext ist, wird er erweiter.
-            while(text.length() > key.length())
-                key.append(keystring);
- 
-            //Gibt den angepassten Schlüsseltext zurück.
-            return key.toString();
+    private byte[] buildEncryptionKeySequence(int sequenceLength){
+        byte[] sequence = new byte[sequenceLength];
+        
+        for (int i = 0; i<= sequenceLength - 1; i++){
+            _key = (_a * _key + _b) % _m;
+            sequence[i] = (byte)_key;
         }
+        
+        return sequence;
+    }
     /**
      * 
      */
-    public void Convert() {
-        // TODO implement here
+    @Override
+    public void convert() {
+        byte[] seq;
+        for (int i = 0; i <= _text.size() - 1; i++){
+            seq = buildEncryptionKeySequence(_text.get(i).length());
+            
+            byte[] bla = EncryptString(_text.get(i), seq);
+            _ergebnis.add(bla);
+        }
+        
     }
 
 }
