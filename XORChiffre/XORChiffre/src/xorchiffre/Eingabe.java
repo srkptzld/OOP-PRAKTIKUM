@@ -20,18 +20,22 @@ public class Eingabe  {
     public IConverter Run() {
         
         ArrayList<Double> parameter = readABM();
-        Double _a = parameter.get(0);
-        Double _b = parameter.get(1);
-        Double _m = parameter.get(2);
+        int _a = parameter.get(0);
+        int _b = parameter.get(1);
+        int _m = parameter.get(2);
         
         Integer _key = readKey();
         
         Boolean _type = readType();
         
+        String _text;
         
-        
-        
-       
+        if(_type = false){
+            Decryptor xorchiffre = new Decryptor(_a,_b,_m,_key,_text);
+        }else if(_type = true){
+            Encryptor xorchiffre = new Encryptor(_a,_b,_m,_key,_text);
+        }               
+       return xorchiffre;
     }
 
     /**
@@ -39,19 +43,19 @@ public class Eingabe  {
      */
     private ArrayList<Double> readABM() {
         
-        ArrayList<Double> parameter = new ArrayList<Double>();
+        ArrayList<Int> parameter = new ArrayList<Int>();
         Scanner scanner = new Scanner(System.in);
         int reihenfolge = 0;
         
-        System.out.println("Bitte geben Sie eine positive Fließkommazahl als Wert für den A-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den A-Parameter ein.");
         
         while(reihenfolge == 0){            
  
             String eingabe = scanner.nextLine();
         
             try{
-                if(Double.parseDouble(eingabe) > 0){
-                    parameter.add(Double.parseDouble(eingabe));
+                if(Integer.parseInt(eingabe) > 0){
+                    parameter.add(Integer.parseInt(eingabe));
                     reihenfolge = 1;
                 }else{
                     System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
@@ -61,15 +65,15 @@ public class Eingabe  {
             }
         }
         
-        System.out.println("Bitte geben Sie eine positive Fließkommazahl als Wert für den B-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den B-Parameter ein.");
         
         while(reihenfolge == 1){            
  
             String eingabe = scanner.nextLine();
         
             try{
-                if(Double.parseDouble(eingabe) > 0){
-                    parameter.add(Double.parseDouble(eingabe));
+                if(Integer.parseInt(eingabe) > 0){
+                    parameter.add(Integer.parseInt(eingabe));
                     reihenfolge = 2;
                 }else{
                     System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
@@ -79,15 +83,15 @@ public class Eingabe  {
             }
         }
         
-        System.out.println("Bitte geben Sie eine positive Fließkommazahl als Wert für den M-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den M-Parameter ein.");
         
         while(reihenfolge == 2){            
  
             String eingabe = scanner.nextLine();
         
             try{
-                if(Double.parseDouble(eingabe) > 0){
-                    parameter.add(Double.parseDouble(eingabe));
+                if(Integer.parseInt(eingabe) > 0){
+                    parameter.add(Integer.parseInt(eingabe));
                     reihenfolge = 3;
                 }else{
                     System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
@@ -160,13 +164,6 @@ public class Eingabe  {
     private String readFileName() {
         // TODO implement here
         return null;
-    }
-
-    /**
-     * 
-     */
-    public void Convert() {
-        // TODO implement here
     }
 
 }
