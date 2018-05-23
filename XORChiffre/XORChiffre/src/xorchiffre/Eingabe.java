@@ -1,5 +1,6 @@
 package xorchiffre;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -20,23 +21,24 @@ public class Eingabe  {
     public IConverter Run() {
         
         ArrayList<Integer> parameter = readABM();
-       // int _a = parameter.get(0);
-        //int _b = parameter.get(1);
-       // int _m = parameter.get(2);
+        int a = parameter.get(0);
+        int b = parameter.get(1);
+        int m = parameter.get(2);
         
-//        Integer _key = readKey();
-//        
-//        Boolean _type = readType();
-//        
-//        String _text;
-//        
-//        if(_type = false){
-//            Decryptor xorchiffre = new Decryptor(_a,_b,_m,_key,_text);
-//        }else if(_type = true){
-//            Encryptor xorchiffre = new Encryptor(_a,_b,_m,_key,_text);
-//        }               
-//       return xorchiffre;
-return null;
+        Integer key = readKey();
+        
+        Boolean type = readType();
+        
+        ArrayList<String> text = new ArrayList<>();
+        ArrayList<byte[]> bytes = new ArrayList<>();
+        IConverter xorchiffre;
+        if(type == false)
+            xorchiffre = new Decryptor(a, b, m, key, bytes);
+        else
+            xorchiffre = new Encryptor( a, b, m, key, text);
+                       
+        String f = new File("texts/gedicht.txt").getAbsolutePath();
+        return xorchiffre;        
     }
 
     /**
