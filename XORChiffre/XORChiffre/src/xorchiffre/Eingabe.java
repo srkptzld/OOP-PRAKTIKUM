@@ -34,16 +34,28 @@ public class Eingabe  {
         
         Boolean type = readType();
         
+        ArrayList<String> text = new ArrayList<String>();
         IConverter xorchiffre;
         if(type == true){
             ArrayList<byte[]> bytes = new ArrayList<byte[]>();
             xorchiffre = new Decryptor(a, b, m, key, bytes);
         }else{
-            ArrayList<String> text = new ArrayList<String>();
-            text = readFileEnc("Gedicht");
+            boolean found = false;
+            Scanner scanner = new Scanner(System.in);
+            
+            System.out.println("Bitte geben Sie den Dateinamen ein.");
+            while(!found){
+                String eingabe = scanner.nextLine();               
+                File file = new File("Daten/" + eingabe + ".txt");
+                if(file.exists()){                   
+                    text = readFileEnc(file);                    
+                    found = true;
+                }else{
+                    System.out.println("Die Datei scheint nicht nicht vorhanden zu sein. Bitte versuchen Sie erneut.");
+                }                
+            }
             xorchiffre = new Encryptor( a, b, m, key, text);
-        }               
-        String f = new File("texts/gedicht.txt").getAbsolutePath();
+       }               
         return xorchiffre;        
     }
 
@@ -150,14 +162,15 @@ public class Eingabe  {
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Bitte geben Sie ein, ob sie 'entschlüsseln' oder 'verschlüsseln' möchten.");
-        
-        String eingabe = scanner.nextLine();
-        
+        System.out.println("Bitte geben Sie ein, ob sie 'decrypt' oder 'encrypt' möchten.");
+           
         while(scanning){     
-            if(eingabe.equals("entschlüsseln")){
+            
+            String eingabe = scanner.nextLine();
+            
+            if(eingabe.equals("decrypt")){
                 scanning = false;
-            }else if(eingabe.equals("verschlüsseln")){
+            }else if(eingabe.equals("encrypt")){
                 type = false;
                 scanning = false;
             }else{
@@ -170,31 +183,28 @@ public class Eingabe  {
     /**
      * @return
      */
-    private ArrayList<String> readFileEnc(String filename) {
-               
-        File file = new File("Daten/" + filename + ".txt");  
+    private ArrayList<String> readFileEnc(File file) {
+                
         ArrayList<String> text = new ArrayList<>();
         String textline;
         Boolean found = false;
-        if(!file.exists())
-            exit();
-        Scanner scanner;
-        while (found = false)
-        try{
-         scanner = new Scanner(file);
-         found = true;
-            }
-        catch(FileNotFoundException e){
-            System.out.println("File wurde nicht gefunden.");
-        }
         
-        while (scanner.hasNextLine())
-        {
-            textline = scanner.next();
-            text.add(textline);
-        }        
-        scanner.close();        
-        }        
+        Scanner scanner;
+        while (!found){
+            try{
+                scanner = new Scanner(file);
+                while (scanner.hasNextLine())
+                    {
+                        textline = scanner.next();
+                        text.add(textline);
+                    }        
+                scanner.close();
+                found = true;
+            }catch(FileNotFoundException e){
+                System.out.println("File wurde nicht gefunden.");
+            }
+        }
+                
         return text;
     }
     
