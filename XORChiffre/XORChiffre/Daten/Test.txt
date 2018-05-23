@@ -1,0 +1,3 @@
+Dies ist ein Test mit Punkt.
+Dies ist ein Test mit Komma,
+und dies ist das Ende
