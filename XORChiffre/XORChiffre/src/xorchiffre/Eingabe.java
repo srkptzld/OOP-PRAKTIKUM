@@ -1,7 +1,12 @@
 package xorchiffre;
 
 import java.io.File;
+import java.io.FileReader;
 import java.util.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import static javafx.application.Platform.exit;
 
 /**
  * 
@@ -29,14 +34,15 @@ public class Eingabe  {
         
         Boolean type = readType();
         
-        ArrayList<String> text = new ArrayList<>();
-        ArrayList<byte[]> bytes = new ArrayList<>();
         IConverter xorchiffre;
-        if(type == false)
+        if(type == true){
+            ArrayList<byte[]> bytes = new ArrayList<byte[]>();
             xorchiffre = new Decryptor(a, b, m, key, bytes);
-        else
+        }else{
+            ArrayList<String> text = new ArrayList<String>();
+            text = readFileEnc("Gedicht");
             xorchiffre = new Encryptor( a, b, m, key, text);
-                       
+        }               
         String f = new File("texts/gedicht.txt").getAbsolutePath();
         return xorchiffre;        
     }
@@ -164,9 +170,50 @@ public class Eingabe  {
     /**
      * @return
      */
-    private String readFileName() {
-        // TODO implement here
-        return null;
+    private ArrayList<String> readFileEnc(String filename) {
+               
+        File file = new File("Daten/" + filename + ".txt");  
+        ArrayList<String> text = new ArrayList<>();
+        String textline;
+        Boolean found = false;
+        if(!file.exists())
+            exit();
+        Scanner scanner;
+        while (found = false)
+        try{
+         scanner = new Scanner(file);
+         found = true;
+            }
+        catch(FileNotFoundException e){
+            System.out.println("File wurde nicht gefunden.");
+        }
+        
+        while (scanner.hasNextLine())
+        {
+            textline = scanner.next();
+            text.add(textline);
+        }        
+        scanner.close();        
+        }        
+        return text;
+    }
+    
+    private ArrayList<byte[]> readFileDec(String filename) {
+        
+        File file = new File("../Daten/" + filename + ".txt");  
+        ArrayList<byte[]> bytes = new ArrayList<byte[]>();
+        if(!file.exists())
+            exit();
+        else{
+        Scanner scanner = new Scanner(file.getAbsolutePath());
+               
+        while (scanner.hasNext())
+        {           
+            bytes.add(scanner.nextLine().getBytes());
+        }        
+        scanner.close();        
+        }        
+        return bytes;
     }
 
 }
