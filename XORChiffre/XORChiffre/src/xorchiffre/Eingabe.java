@@ -133,11 +133,12 @@ public class Eingabe  {
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Bitte geben Sie eine positive Ganzzahl als Schlüssel ein.");
-        
-        String eingabe = scanner.nextLine();
+        System.out.println("Bitte geben Sie eine positive Ganzzahl als Schlüssel ein.");        
         
         while(scanning){
+            
+            String eingabe = scanner.nextLine();
+            
             try{
                 if(Integer.parseInt(eingabe) > 0){
                     key = Integer.parseInt(eingabe);
