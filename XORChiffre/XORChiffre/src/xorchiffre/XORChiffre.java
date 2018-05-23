@@ -20,7 +20,7 @@ public class XORChiffre {
         enc.convert();
         System.out.println(enc._ergebnis);
         
-        Decryptor dec = new Decryptor(421, 54773, 259200, 3, enc._ergebnis);
+        Decryptor dec = new Decryptor(421, 54773, 259200, 3, enc._result);
         dec.convert();
         System.out.println(dec._ergebnis);
         

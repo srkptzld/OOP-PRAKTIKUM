@@ -71,11 +71,8 @@ public class Decryptor implements IConverter {
         return plainText;
     }
 
-    /**
-     * 
-     */
     @Override
-    public void convert() {
+    public String convert() {
         byte[] seq;
         for (int i = 0; i <= _text.size() - 1; i++){
             seq = buildDecryptionKeySequence(_text.get(i).length);
@@ -83,6 +80,7 @@ public class Decryptor implements IConverter {
            String bla = DecryptXOREng(_text.get(i), seq);
            _ergebnis.add(bla);
         }
+        return _ergebnis.toString();
     }
 
     private byte[] buildDecryptionKeySequence(int sequenceLength){
