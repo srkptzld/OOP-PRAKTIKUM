@@ -1,12 +1,16 @@
 package xorchiffre;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.*;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import static javafx.application.Platform.exit;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -23,21 +27,21 @@ public class Eingabe  {
     /**
      * @return
      */
-    public IConverter Run() {
+    public IConverter Run() throws IOException {
         
-        ArrayList<Integer> parameter = readABM();
-        int a = parameter.get(0);
-        int b = parameter.get(1);
-        int m = parameter.get(2);
+       // ArrayList<Integer> parameter = readABM();
+        int a = 421;//parameter.get(0);
+        int b = 54773; //parameter.get(1);
+        int m = 259200; //parameter.get(2);
         
-        Integer key = readKey();
+        long key = 3; //readKey();
         
-        Boolean type = readType();
+        Boolean type = false; //readType();
         
-        ArrayList<String> text = new ArrayList<String>();
+        ArrayList<String> text = new ArrayList<>();
         IConverter xorchiffre;
         if(type == true){
-            ArrayList<byte[]> bytes = new ArrayList<byte[]>();
+            ArrayList<byte[]> bytes = new ArrayList<>();
             xorchiffre = new Decryptor(a, b, m, key, bytes);
         }else{
             boolean found = false;
@@ -127,9 +131,9 @@ public class Eingabe  {
     /**
      * @return
      */
-    private Integer readKey() {
+    private long readKey() {
         
-        int key = 0;
+        long key = 0;
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
@@ -141,7 +145,7 @@ public class Eingabe  {
             
             try{
                 if(Integer.parseInt(eingabe) > 0){
-                    key = Integer.parseInt(eingabe);
+                    key = Integer.parseUnsignedInt(eingabe);
                     scanning = false;
                 }else{
                     System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
@@ -184,22 +188,23 @@ public class Eingabe  {
     /**
      * @return
      */
-    private ArrayList<String> readFileEnc(File file) {
+    private ArrayList<String> readFileEnc(File file) throws IOException {
                 
         ArrayList<String> text = new ArrayList<>();
-        String textline;
+        String textline = "";
         Boolean found = false;
         
-        Scanner scanner;
+        BufferedReader buf;
         while (!found){
             try{
-                scanner = new Scanner(file);
-                while (scanner.hasNextLine())
-                    {
-                        textline = scanner.next();
+                    FileInputStream fis = new FileInputStream(file);
+                    InputStreamReader isr = new InputStreamReader(fis, "ISO-8859-1");
+                    buf = new BufferedReader(isr);             
+
+                while ((textline = buf.readLine()) != null)
                         text.add(textline);
-                    }        
-                scanner.close();
+       
+                
                 found = true;
             }catch(FileNotFoundException e){
                 System.out.println("File wurde nicht gefunden.");
@@ -209,21 +214,30 @@ public class Eingabe  {
         return text;
     }
     
-    private ArrayList<byte[]> readFileDec(String filename) {
+    private ArrayList<byte[]> readFileDec(File file) {
+         
+        ArrayList<byte[]> bytes = new ArrayList<>();
+        byte[] byteX = new byte[]{};
+        Boolean found = false;
         
-        File file = new File("../Daten/" + filename + ".txt");  
-        ArrayList<byte[]> bytes = new ArrayList<byte[]>();
-        if(!file.exists())
-            exit();
-        else{
-        Scanner scanner = new Scanner(file.getAbsolutePath());
-               
-        while (scanner.hasNext())
-        {           
-            bytes.add(scanner.nextLine().getBytes());
-        }        
-        scanner.close();        
-        }        
+        Scanner scanner;
+        while (!found){
+            try{
+                
+                scanner = new Scanner(new FileInputStream(file), "ISO-8859-1");
+
+                while (scanner.hasNextLine())
+                    {
+                        byteX[byteX.length]=scanner.nextByte();
+                    }        
+                
+                    bytes.add(byteX);
+                scanner.close();
+                found = true;
+            }catch(FileNotFoundException e){
+                System.out.println("File wurde nicht gefunden.");
+            }
+        }
         return bytes;
     }
 

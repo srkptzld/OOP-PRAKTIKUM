@@ -1,6 +1,8 @@
 package xorchiffre;
 
 import java.io.File;
+import java.nio.ByteBuffer;
+import java.nio.charset.*;
 import java.util.*;
 
 /**
@@ -26,17 +28,21 @@ public class Encryptor implements IConverter {
     /**
      * encryption key
      */
-    private int _key;
+    private long _key;
 
     /**
      * array containing the original text
      */
-    private ArrayList<String> _text;
+    public ArrayList<String> _text;
+    
+        /**
+     * array containing the original text
+     */
 
     /**
      * encrypted result
      */
-    private ArrayList<byte[]> _result;
+    public ArrayList<byte[]> _result;
 
     /**
      * @param a 
@@ -45,7 +51,7 @@ public class Encryptor implements IConverter {
      * @param key 
      * @param text
      */
-    public Encryptor(int a, int b, int m, Integer key, ArrayList<String> text) {
+    public Encryptor(int a, int b, int m, long key, ArrayList<String> text) {
         _a = a;
         _b = b;
         _m = m;
@@ -59,14 +65,15 @@ public class Encryptor implements IConverter {
      * @param plainText
      * @param keySequence
      */
-    private byte[] EncryptString(String plainText, byte[] keySequence)
+    private byte[] EncryptString(byte[] binaryPlainText, byte[] keySequence)
     {
-        byte[] binaryPlainText = plainText.getBytes();
-
         //Nun iterieren wir durch jedes Zeichen im Klartext und verschlüsseln den Klartextbuchstaben
-        for(int i = 0;i<plainText.length() - 1;i++)
+        for(int i = 0;i <= binaryPlainText.length - 1;i++)
+        {
+            System.out.println(i + " | " + binaryPlainText[i] + " XOR " + keySequence[i] + " -> " + (binaryPlainText[i] ^ keySequence[i]));
             binaryPlainText[i] ^=  keySequence[i];
-
+        }
+        System.out.println("==========================");
         return binaryPlainText;
     }
 
@@ -78,9 +85,10 @@ public class Encryptor implements IConverter {
     private byte[] buildEncryptionKeySequence(int sequenceLength){
         byte[] sequence = new byte[sequenceLength];
         
-        for (int i = 0; i<= sequenceLength - 1; i++){
+        for (int i = 0; i <= sequenceLength - 1; i++){
             _key = (_a * _key + _b) % _m;
-            sequence[i] = (byte)_key;
+            byte[] bytes = ByteBuffer.allocate(8).putLong(_key).array();
+            sequence[i] = (byte) Math.abs(bytes[bytes.length-1]);
         }     
         return sequence;
     }
@@ -91,9 +99,9 @@ public class Encryptor implements IConverter {
         byte[] seq;
         for (int i = 0; i <= _text.size() - 1; i++){
             seq = buildEncryptionKeySequence(_text.get(i).length());
-            
-            byte[] bla = EncryptString(_text.get(i), seq);
-            _result.add(bla);
+            byte[] bytewurst = _text.get(i).getBytes(Charset.forName("US-ASCII"));//"ISO-8859-1"));
+            byte[] encrypted = EncryptString(bytewurst, seq);
+            _result.add(encrypted);
         }
         return _result.toString();
     }

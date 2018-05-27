@@ -2,6 +2,7 @@ package xorchiffre;
 
         
 import java.io.File;
+import java.nio.ByteBuffer;
 import java.util.*;
 
 /**
@@ -26,7 +27,7 @@ public class Decryptor implements IConverter {
     /**
      * 
      */
-    private int _key;
+    private long _key;
 
     /**
      * 
@@ -46,7 +47,7 @@ public class Decryptor implements IConverter {
      * @param key 
      * @param encryptedText
      */
-    public Decryptor(int a, int b, int m, int key, ArrayList<byte[]> encryptedText) {
+    public Decryptor(int a, int b, int m, long key, ArrayList<byte[]> encryptedText) {
         _a = a;
         _b = b;
         _m = m;
@@ -55,18 +56,26 @@ public class Decryptor implements IConverter {
         _ergebnis = new ArrayList<>();
     }
     
-     private String DecryptXOREng(byte[] chiffreNumberArray, byte[] keyText)
+     private String DecryptXOR(byte[] chiffreNumberArray, byte[] keyText)
     {
         String plainText = "";
 
         //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
-        for (int i = 0; i < chiffreNumberArray.length - 1; i++)
+        for (int i = 0; i <= chiffreNumberArray.length - 1; i++){
+            System.out.println(i + " | " + chiffreNumberArray[i] + " XOR " + keyText[i] + " -> " + (chiffreNumberArray[i] ^ keyText[i]));
             chiffreNumberArray[i] ^= keyText[i];
-
-        for (int i = 0; i <= chiffreNumberArray.length - 1; i++)
-        {
-            plainText += String.valueOf((char)chiffreNumberArray[i]);
         }
+        
+        for (int i = 0; i <= chiffreNumberArray.length - 1; i++)
+            plainText += String.valueOf((char)chiffreNumberArray[i]);      
+        
+        System.out.println("==========================");
+        System.out.println(plainText);
+        
+        System.out.println("==========================");
+        
+
+
 
         return plainText;
     }
@@ -77,21 +86,27 @@ public class Decryptor implements IConverter {
         for (int i = 0; i <= _text.size() - 1; i++){
             seq = buildDecryptionKeySequence(_text.get(i).length);
             
-           String bla = DecryptXOREng(_text.get(i), seq);
-           _ergebnis.add(bla);
+           String decryptedLine = DecryptXOR(_text.get(i), seq);
+           _ergebnis.add(decryptedLine);
         }
         return _ergebnis.toString();
     }
 
+    /**
+     * Builds the encryption key sequence
+     * @param sequenceLength length of the sequence
+     * @return Key sequence
+     */
     private byte[] buildDecryptionKeySequence(int sequenceLength){
         byte[] sequence = new byte[sequenceLength];
         
         for (int i = 0; i<= sequenceLength - 1; i++){
             _key = (_a * _key + _b) % _m;
-            sequence[i] = (byte)_key;
-        }
-        
+            byte[] bytes = ByteBuffer.allocate(8).putLong(_key).array();
+            sequence[i] = (byte) Math.abs(bytes[bytes.length-1]);
+        }     
         return sequence;
     }
+    
 
 }
