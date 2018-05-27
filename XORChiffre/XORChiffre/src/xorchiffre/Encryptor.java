@@ -42,7 +42,9 @@ public class Encryptor implements IConverter {
     /**
      * encrypted result
      */
-    public ArrayList<byte[]> _result;
+    private ArrayList<byte[]> _result;
+    
+    private File _file;
 
     /**
      * @param a 
@@ -51,13 +53,14 @@ public class Encryptor implements IConverter {
      * @param key 
      * @param text
      */
-    public Encryptor(int a, int b, int m, long key, ArrayList<String> text) {
+    public Encryptor(int a, int b, int m, long key, ArrayList<String> text, String savePath) {
         _a = a;
         _b = b;
         _m = m;
         _key = key;
         _text = text;       
         _result = new ArrayList<>();
+        _file = new File(savePath);
     }
     
     /**
@@ -104,6 +107,14 @@ public class Encryptor implements IConverter {
             _result.add(encrypted);
         }
         return _result.toString();
+    }
+    
+    public ArrayList<byte[]> getResult(){
+        return _result;
+    }    
+    
+    public File getFile(){
+        return _file;
     }
 
 }

@@ -58,7 +58,7 @@ public class Eingabe  {
                     System.out.println("Die Datei scheint nicht nicht vorhanden zu sein. Bitte versuchen Sie erneut.");
                 }                
             }
-            xorchiffre = new Encryptor( a, b, m, key, text);
+            xorchiffre = new Encryptor( a, b, m, key, text, "geheimtext.txt");
        }               
         return xorchiffre;        
     }
