@@ -67,6 +67,7 @@ public class Ausgabe {
             
             for (int i = 0; i <= decrypted.size() - 1; i++) {
                fop.write(decrypted.get(i));
+               fop.write("\r\n");
             }     
             fop.flush();
             fop.close();
