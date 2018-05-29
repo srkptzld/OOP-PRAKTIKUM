@@ -15,8 +15,7 @@ public class XORChiffre {
     public static void main(String[] args) throws IOException {      
         
         Terminal terminal = new Terminal();
-        terminal.run();
-       
+        terminal.run();    
     }
     
 }

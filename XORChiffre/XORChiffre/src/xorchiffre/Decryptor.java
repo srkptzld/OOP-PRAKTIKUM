@@ -3,6 +3,7 @@ package xorchiffre;
         
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -63,14 +64,13 @@ public class Decryptor implements IConverter {
     {
         String plainText = "";
 
-        //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlÃ¼sselten Buchstaben
+        //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
         for (int i = 0; i <= chiffreNumberArray.length - 1; i++){
             System.out.println(i + " | " + chiffreNumberArray[i] + " XOR " + keyText[i] + " -> " + (chiffreNumberArray[i] ^ keyText[i]));
             chiffreNumberArray[i] ^= keyText[i];
         }
         
-        for (int i = 0; i <= chiffreNumberArray.length - 1; i++)
-            plainText += String.valueOf((char)chiffreNumberArray[i]);      
+            plainText = new String(chiffreNumberArray, Charset.forName("Windows-1252"));      
         
         System.out.println("==========================");
         System.out.println(plainText);

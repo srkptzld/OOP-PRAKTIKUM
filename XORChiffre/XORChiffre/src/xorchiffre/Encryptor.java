@@ -2,7 +2,7 @@ package xorchiffre;
 
 import java.io.File;
 import java.nio.ByteBuffer;
-import java.nio.charset.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -61,16 +61,17 @@ public class Encryptor implements IConverter {
         _text = text;       
         _result = new ArrayList<>();
         _file = new File(savePath);
+//            System.setProperty("file.encoding", "UTF-8");
     }
     
     /**
-     *  VerschlÃ¼sselt den plainText mit dem keySequence
+     *  Verschlüsselt den plainText mit dem keySequence
      * @param plainText
      * @param keySequence
      */
     private byte[] EncryptString(byte[] binaryPlainText, byte[] keySequence)
     {
-        //Nun iterieren wir durch jedes Zeichen im Klartext und verschlÃ¼sseln den Klartextbuchstaben
+        //Nun iterieren wir durch jedes Zeichen im Klartext und verschlüsseln den Klartextbuchstaben
         for(int i = 0;i <= binaryPlainText.length - 1;i++)
         {
             System.out.println(i + " | " + binaryPlainText[i] + " XOR " + keySequence[i] + " -> " + (binaryPlainText[i] ^ keySequence[i]));
@@ -101,8 +102,8 @@ public class Encryptor implements IConverter {
     public String convert() {
         byte[] seq;
         for (int i = 0; i <= _text.size() - 1; i++){
+            byte[] bytewurst = _text.get(i).getBytes(Charset.forName("Windows-1252"));
             seq = buildEncryptionKeySequence(_text.get(i).length());
-            byte[] bytewurst = _text.get(i).getBytes(Charset.forName("US-ASCII"));//"ISO-8859-1"));
             byte[] encrypted = EncryptString(bytewurst, seq);
             _result.add(encrypted);
         }

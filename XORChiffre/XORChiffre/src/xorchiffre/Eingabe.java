@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,20 +30,22 @@ public class Eingabe  {
      */
     public IConverter Run() throws IOException {
         
-       // ArrayList<Integer> parameter = readABM();
-        int a = 421;//parameter.get(0);
-        int b = 54773; //parameter.get(1);
-        int m = 259200; //parameter.get(2);
+        ArrayList<Integer> parameter = readABM();
+        int a = parameter.get(0);
+        int b = parameter.get(1);
+        int m = parameter.get(2);
         
-        long key = 3; //readKey();
+        long key = readKey();
         
-        Boolean type = false; //readType();
+        Boolean type = readType();
+        
+        String path = readSavePath();
         
         ArrayList<String> text = new ArrayList<>();
         IConverter xorchiffre;
         if(type == true){
             ArrayList<byte[]> bytes = new ArrayList<>();
-            xorchiffre = new Decryptor(a, b, m, key, bytes, "Daten.klartext.txt");
+            xorchiffre = new Decryptor(a, b, m, key, bytes, "Daten/" + path + ".txt");
         }else{
             boolean found = false;
             Scanner scanner = new Scanner(System.in);
@@ -58,7 +61,7 @@ public class Eingabe  {
                     System.out.println("Die Datei scheint nicht nicht vorhanden zu sein. Bitte versuchen Sie erneut.");
                 }                
             }
-            xorchiffre = new Encryptor( a, b, m, key, text, "Daten/geheimtext.txt");
+            xorchiffre = new Encryptor( a, b, m, key, text, "Daten/" + path + ".txt");
        }               
         return xorchiffre;        
     }
@@ -72,7 +75,7 @@ public class Eingabe  {
         Scanner scanner = new Scanner(System.in);
         int reihenfolge = 0;
         
-        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert fÃ¼r den A-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den A-Parameter ein.");
         
         while(reihenfolge == 0){            
  
@@ -90,7 +93,7 @@ public class Eingabe  {
             }
         }
         
-        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert fÃ¼r den B-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den B-Parameter ein.");
         
         while(reihenfolge == 1){            
  
@@ -108,7 +111,7 @@ public class Eingabe  {
             }
         }
         
-        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert fÃ¼r den M-Parameter ein.");
+        System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den M-Parameter ein.");
         
         while(reihenfolge == 2){            
  
@@ -137,7 +140,7 @@ public class Eingabe  {
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Bitte geben Sie eine positive Ganzzahl als SchlÃ¼ssel ein.");        
+        System.out.println("Bitte geben Sie eine positive Ganzzahl als Schlüssel ein.");        
         
         while(scanning){
             
@@ -167,7 +170,7 @@ public class Eingabe  {
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Bitte geben Sie ein, ob sie 'decrypt' oder 'encrypt' mÃ¶chten.");
+        System.out.println("Bitte geben Sie ein, ob sie 'decrypt' oder 'encrypt' möchten.");
            
         while(scanning){     
             
@@ -198,7 +201,8 @@ public class Eingabe  {
         while (!found){
             try{
                     FileInputStream fis = new FileInputStream(file);
-                    InputStreamReader isr = new InputStreamReader(fis, "ISO-8859-1");
+                    Charset set = Charset.forName("Windows-1252");
+                    InputStreamReader isr = new InputStreamReader(fis, set);
                     buf = new BufferedReader(isr);             
 
                 while ((textline = buf.readLine()) != null)
@@ -224,7 +228,7 @@ public class Eingabe  {
         while (!found){
             try{
                 
-                scanner = new Scanner(new FileInputStream(file), "ISO-8859-1");
+                scanner = new Scanner(new FileInputStream(file));
 
                 while (scanner.hasNextLine())
                     {
@@ -247,7 +251,7 @@ public class Eingabe  {
         boolean scanning = true;
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Bitte geben Sie einen Namen fÃ¼r die abzuspeichernde Datei an.");        
+        System.out.println("Bitte geben Sie einen Namen für die abzuspeichernde Datei an.");        
         
         while(scanning){
             
