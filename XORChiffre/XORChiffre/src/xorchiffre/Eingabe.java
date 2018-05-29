@@ -42,7 +42,7 @@ public class Eingabe  {
         IConverter xorchiffre;
         if(type == true){
             ArrayList<byte[]> bytes = new ArrayList<>();
-            xorchiffre = new Decryptor(a, b, m, key, bytes);
+            xorchiffre = new Decryptor(a, b, m, key, bytes, "Daten.klartext.txt");
         }else{
             boolean found = false;
             Scanner scanner = new Scanner(System.in);

@@ -36,9 +36,11 @@ public class Terminal {
         Ausgabe ausgabe = new Ausgabe();
         ausgabe.saveEncrypted(enc);
         
-        Decryptor dec = new Decryptor(421, 54773, 259200, 3, enc.getResult());
+        Decryptor dec = new Decryptor(421, 54773, 259200, 3, enc.getResult(), "Daten/klartext.txt");
         dec.convert();
         System.out.println(dec._ergebnis);
+        
+        ausgabe.saveDecrypted(dec);
                 
     }
 
