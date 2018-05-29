@@ -38,6 +38,8 @@ public class Decryptor implements IConverter {
      * 
      */
     public ArrayList<String> _ergebnis;
+    
+    private File _file;
 
 
     /**
@@ -47,13 +49,14 @@ public class Decryptor implements IConverter {
      * @param key 
      * @param encryptedText
      */
-    public Decryptor(int a, int b, int m, long key, ArrayList<byte[]> encryptedText) {
+    public Decryptor(int a, int b, int m, long key, ArrayList<byte[]> encryptedText, String savePath) {
         _a = a;
         _b = b;
         _m = m;
         _key = key;
         _text = encryptedText; 
-        _ergebnis = new ArrayList<>();
+        _ergebnis = new ArrayList<String>();
+        _file = new File(savePath);
     }
     
      private String DecryptXOR(byte[] chiffreNumberArray, byte[] keyText)
@@ -108,5 +111,12 @@ public class Decryptor implements IConverter {
         return sequence;
     }
     
-
+    public ArrayList<String> getResult(){
+        return _ergebnis;
+    }    
+    
+    public File getFile(){
+        return _file;
+    }
+    
 }
