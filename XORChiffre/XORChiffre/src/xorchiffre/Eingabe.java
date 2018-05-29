@@ -240,5 +240,29 @@ public class Eingabe  {
         }
         return bytes;
     }
+    
+    public String readSavePath(){
+               
+        String savePath = "";
+        boolean scanning = true;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Bitte geben Sie einen Namen für die abzuspeichernde Datei an.");        
+        
+        while(scanning){
+            
+            String eingabe = scanner.nextLine();
+            
+            if(eingabe != null){               
+                savePath = eingabe;
+                scanning = false;
+            }else{
+                System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
+            }
+        }
+        
+        return savePath;
+        
+    }
 
 }
