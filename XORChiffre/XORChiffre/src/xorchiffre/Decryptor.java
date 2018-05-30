@@ -1,6 +1,5 @@
 package xorchiffre;
-
-        
+       
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;

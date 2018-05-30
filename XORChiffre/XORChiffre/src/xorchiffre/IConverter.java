@@ -1,5 +1,4 @@
 package xorchiffre;
-import java.util.*;
 
 /**
  * Converter interface

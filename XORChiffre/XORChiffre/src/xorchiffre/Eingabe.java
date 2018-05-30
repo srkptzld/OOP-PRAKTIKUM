@@ -7,16 +7,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * 
  */
 public class Eingabe  {
+    
+    private boolean type;
 
     /**
      * Default constructor
@@ -37,16 +35,33 @@ public class Eingabe  {
         
         long key = readKey();
         
-        Boolean type = readType();
+        type = readType();
         
         String path = readSavePath();
         
-        ArrayList<String> text = new ArrayList<>();
         IConverter xorchiffre;
         if(type == true){
+            
             ArrayList<byte[]> bytes = new ArrayList<>();
+            boolean found = false;
+            Scanner scanner = new Scanner(System.in);
+            
+            System.out.println("Bitte geben Sie den Dateinamen ein.");
+            while(!found){
+                String eingabe = scanner.nextLine();               
+                File file = new File("Daten/" + eingabe + ".txt");
+                if(file.exists()){                   
+                    bytes = readFileDec(file);                    
+                    found = true;
+                }else{
+                    System.out.println("Die Datei scheint nicht nicht vorhanden zu sein. Bitte versuchen Sie erneut.");
+                }                
+            }
             xorchiffre = new Decryptor(a, b, m, key, bytes, "Daten/" + path + ".txt");
+
         }else{
+            
+            ArrayList<String> text = new ArrayList<>();
             boolean found = false;
             Scanner scanner = new Scanner(System.in);
             
@@ -267,6 +282,10 @@ public class Eingabe  {
         
         return savePath;
         
+    }
+    
+    public boolean getType(){
+        return type;
     }
 
 }
