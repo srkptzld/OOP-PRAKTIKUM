@@ -3,13 +3,13 @@ package xorchiffre;
 import java.io.IOException;
 
 /**
+ * Die Klasse Terminal führt das Programm und übernimmt die Klasseninstanzen und Aufrufe
+ * der Hauptmethoden.
  * 
+ * @author funbold
  */
 public class Terminal {
     
-    /**
-     * 
-     */
     private Eingabe eingabe;
     private Ausgabe ausgabe;
     private IConverter converter;
@@ -21,14 +21,15 @@ public class Terminal {
     }
 
     /**
-     * 
+     * Führt die Verschlüsselung/Entschlüsselung aus.
      */
-    public void run() throws IOException {
+    public void run() {
         
-        Eingabe eingabe = new Eingabe();
-        Ausgabe ausgabe = new Ausgabe();
+        eingabe = new Eingabe();
+        ausgabe = new Ausgabe();
+       
         IConverter converter = eingabe.Run();
-        
+     
         if(eingabe.getType() == true){
             Decryptor dec = (Decryptor)converter;
             dec.convert();
@@ -38,19 +39,6 @@ public class Terminal {
             enc.convert();
             ausgabe.saveEncrypted(enc);                    
         }
-//        Encryptor enc = (Encryptor)test;
-//        enc.convert();
-//        System.out.println(enc.getResult());
-//        System.out.println();
-//        
-//        Ausgabe ausgabe = new Ausgabe();
-//        ausgabe.saveEncrypted(enc);
-//        
-//        Decryptor dec = new Decryptor(421, 54773, 259200, 3, enc.getResult(), "Daten/klartext.txt");
-//        dec.convert();
-//        System.out.println(dec._ergebnis);
-//        
-//        ausgabe.saveDecrypted(dec);
                 
     }
 

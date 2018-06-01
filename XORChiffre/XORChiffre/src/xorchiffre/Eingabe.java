@@ -4,13 +4,17 @@ import java.io.File;
 import java.util.*;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 /**
+ * Die Klasse Eingabe nimmt alle Eingaben entgegen, die die Ver- oder
+ * Entschlüsselung betreffen. Außerdem liest sie die betreffende Datei.
  * 
+ * @author funbold
  */
 public class Eingabe  {
     
@@ -24,9 +28,11 @@ public class Eingabe  {
 
 
     /**
-     * @return
+     * Ruft alle Methoden der Eingabe auf und initialisiert den IConverter.
+     * 
+     * @return IConverter
      */
-    public IConverter Run() throws IOException {
+    public IConverter Run() {
         
         ArrayList<Integer> parameter = readABM();
         int a = parameter.get(0);
@@ -46,7 +52,7 @@ public class Eingabe  {
             boolean found = false;
             Scanner scanner = new Scanner(System.in);
             
-            System.out.println("Bitte geben Sie den Dateinamen ein.");
+            System.out.println("Bitte geben Sie den Dateinamen der zu verarbeitenden Datei ein.");
             while(!found){
                 String eingabe = scanner.nextLine();               
                 File file = new File("Daten/" + eingabe + ".txt");
@@ -65,7 +71,7 @@ public class Eingabe  {
             boolean found = false;
             Scanner scanner = new Scanner(System.in);
             
-            System.out.println("Bitte geben Sie den Dateinamen ein.");
+            System.out.println("Bitte geben Sie den Dateinamen der zu verarbeitenden Datei ein.");
             while(!found){
                 String eingabe = scanner.nextLine();               
                 File file = new File("Daten/" + eingabe + ".txt");
@@ -80,9 +86,34 @@ public class Eingabe  {
        }               
         return xorchiffre;        
     }
+    
+    private int getParameterValue()
+    {
+        int value = 0;
+        boolean done = false;
+        Scanner scanner = new Scanner(System.in);
+           while(!done){            
+ 
+            String eingabe = scanner.nextLine();
+        
+            try{
+                if(Integer.parseInt(eingabe) > 0){
+                    value = Integer.parseInt(eingabe);
+                    done = true;
+                }else{
+                    System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
+                }
+            }catch(NumberFormatException e){
+                System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut."); 
+            }
+        }
+        return value;
+    }
 
     /**
-     * @return
+     * Liest die Parameter der Ver- / Entschlüsselung ein.
+     * 
+     * @return ArrayList<Integer>
      */
     private ArrayList<Integer> readABM() {
         
@@ -92,62 +123,22 @@ public class Eingabe  {
         
         System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den A-Parameter ein.");
         
-        while(reihenfolge == 0){            
- 
-            String eingabe = scanner.nextLine();
-        
-            try{
-                if(Integer.parseInt(eingabe) > 0){
-                    parameter.add(Integer.parseInt(eingabe));
-                    reihenfolge = 1;
-                }else{
-                    System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
-                }
-            }catch(NumberFormatException e){
-                System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut."); 
-            }
-        }
+        parameter.add(getParameterValue());
         
         System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den B-Parameter ein.");
         
-        while(reihenfolge == 1){            
- 
-            String eingabe = scanner.nextLine();
-        
-            try{
-                if(Integer.parseInt(eingabe) > 0){
-                    parameter.add(Integer.parseInt(eingabe));
-                    reihenfolge = 2;
-                }else{
-                    System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
-                }
-            }catch(NumberFormatException e){
-                System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut."); 
-            }
-        }
-        
+        parameter.add(getParameterValue());
         System.out.println("Bitte geben Sie eine positive Ganzahl als Wert für den M-Parameter ein.");
         
-        while(reihenfolge == 2){            
- 
-            String eingabe = scanner.nextLine();
+        parameter.add(getParameterValue());
         
-            try{
-                if(Integer.parseInt(eingabe) > 0){
-                    parameter.add(Integer.parseInt(eingabe));
-                    reihenfolge = 3;
-                }else{
-                    System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut.");
-                }
-            }catch(NumberFormatException e){
-                System.out.println("Die Eingabe ist fehlerhaft. Bitte versuchen sie erneut."); 
-            }
-        }                
         return parameter;
     }
 
     /**
-     * @return
+     * Liest den Schlüssel ein.
+     * 
+     * @return long
      */
     private long readKey() {
         
@@ -177,7 +168,9 @@ public class Eingabe  {
     }
 
     /**
-     * @return
+     * Liest den Typ (Ver- / Entschlüsselung) ein.
+     * 
+     * @return Boolean
      */
     private Boolean readType() {
         
@@ -204,14 +197,17 @@ public class Eingabe  {
     }
 
     /**
-     * @return
+     * Liest die Datei zum verschlüsseln ein.
+     * 
+     * @param file
+     * @return ArrayList<String>
      */
-    private ArrayList<String> readFileEnc(File file) throws IOException {
+    private ArrayList<String> readFileEnc(File file) {
                 
         ArrayList<String> text = new ArrayList<>();
         String textline = "";
         Boolean found = false;
-        
+        String lineFeed = System.getProperty("line.separator");
         BufferedReader buf;
         while (!found){
             try{
@@ -221,46 +217,49 @@ public class Eingabe  {
                     buf = new BufferedReader(isr);             
 
                 while ((textline = buf.readLine()) != null)
-                        text.add(textline);
+                        text.add(textline + lineFeed);
        
                 
                 found = true;
             }catch(FileNotFoundException e){
                 System.out.println("File wurde nicht gefunden.");
+            }catch(IOException e){
+                System.out.println("Unerwarteter Fehler. Bitte starten Sie das Programm erneut.");
             }
         }
                 
         return text;
     }
     
+    /**
+     * Liest die Datei zum entschlüsseln ein.
+     * 
+     * @param file
+     * @return ArrayList<byte[]>
+     */
     private ArrayList<byte[]> readFileDec(File file) {
          
         ArrayList<byte[]> bytes = new ArrayList<>();
         byte[] byteX = new byte[]{};
         Boolean found = false;
         
-        Scanner scanner;
-        while (!found){
-            try{
-                
-                scanner = new Scanner(new FileInputStream(file));
-
-                while (scanner.hasNextLine())
-                    {
-                        byteX[byteX.length]=scanner.nextByte();
-                    }        
-                
-                    bytes.add(byteX);
-                scanner.close();
-                found = true;
-            }catch(FileNotFoundException e){
-                System.out.println("File wurde nicht gefunden.");
-            }
+        byte[] data = new byte[(int) file.length()];
+        try (DataInputStream dis = new DataInputStream(new FileInputStream(file))) {
+            dis.readFully(data);
+        } catch (IOException ex) {
+                System.out.println("Datei konnte nicht eingelesen werden!");
+            
         }
+        bytes.add(data);
         return bytes;
     }
     
-    public String readSavePath(){
+    /**
+     * List den Namen der abzuspeichernden Datein ein.
+     *
+     * @return String
+     */
+    private String readSavePath(){
                
         String savePath = "";
         boolean scanning = true;
@@ -284,6 +283,11 @@ public class Eingabe  {
         
     }
     
+    /**
+     * Getter für type (Für das Terminal)
+     *
+     * @return Boolean
+     */
     public boolean getType(){
         return type;
     }

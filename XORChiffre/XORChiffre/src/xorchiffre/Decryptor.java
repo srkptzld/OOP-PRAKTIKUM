@@ -6,7 +6,8 @@ import java.nio.charset.Charset;
 import java.util.*;
 
 /**
- * 
+ * Decrypts a xor-encrypted file
+ * @author sirkpetzold
  */
 public class Decryptor implements IConverter {
     /**
@@ -48,6 +49,7 @@ public class Decryptor implements IConverter {
      * @param m 
      * @param key 
      * @param encryptedText
+     * @param savePath
      */
     public Decryptor(int a, int b, int m, long key, ArrayList<byte[]> encryptedText, String savePath) {
         _a = a;
@@ -59,26 +61,23 @@ public class Decryptor implements IConverter {
         _file = new File(savePath);
     }
     
-     private String DecryptXOR(byte[] chiffreNumberArray, byte[] keyText)
+     private String DecryptXOR(byte[] chiffreArray, byte[] keyText)
     {
         String plainText = "";
 
         //Nun iterieren wir durch jeden Eintrag im Chiffre und dechiffrieren den verschlüsselten Buchstaben
-        for (int i = 0; i <= chiffreNumberArray.length - 1; i++){
-            System.out.println(i + " | " + chiffreNumberArray[i] + " XOR " + keyText[i] + " -> " + (chiffreNumberArray[i] ^ keyText[i]));
-            chiffreNumberArray[i] ^= keyText[i];
+        for (int i = 0; i <= chiffreArray.length - 1; i++){
+            System.out.println(i + " | " + chiffreArray[i] + " XOR " + keyText[i] + " -> " + (chiffreArray[i] ^ keyText[i]));
+            chiffreArray[i] ^= keyText[i];
         }
         
-            plainText = new String(chiffreNumberArray, Charset.forName("Windows-1252"));      
+            plainText = new String(chiffreArray, Charset.forName("Windows-1252"));      
         
         System.out.println("==========================");
         System.out.println(plainText);
         
         System.out.println("==========================");
-        
-
-
-
+       
         return plainText;
     }
 
@@ -110,10 +109,18 @@ public class Decryptor implements IConverter {
         return sequence;
     }
     
+    /**
+     * Gets the converted result
+     * @return
+     */
     public ArrayList<String> getResult(){
         return _ergebnis;
     }    
     
+    /**
+     * gets the file
+     * @return
+     */
     public File getFile(){
         return _file;
     }

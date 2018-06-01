@@ -7,7 +7,9 @@ import java.util.*;
 import java.io.FileWriter;
 
 /**
+ * Die Klasse Ausgabe speichert die output-Datei des IConverters.
  * 
+ * @author funbold
  */
 public class Ausgabe {
 
@@ -17,7 +19,11 @@ public class Ausgabe {
     public Ausgabe() {
     }
 
-    
+    /**
+     * Speichert die Chiffre.
+     * 
+     * @param enc
+     */
     public void saveEncrypted(Encryptor enc){
         
         FileOutputStream fop = null;
@@ -50,6 +56,11 @@ public class Ausgabe {
         }
     }
     
+    /**
+     * Speichert das Dechiffrierte.
+     *
+     * @param dec
+     */
     public void saveDecrypted(Decryptor dec){
         
         FileWriter fop = null;

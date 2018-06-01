@@ -6,7 +6,8 @@ import java.nio.charset.Charset;
 import java.util.*;
 
 /**
- * 
+ * Encrypts a file.
+ * @author sirkpetzold
  */
 public class Encryptor implements IConverter {
 
@@ -52,6 +53,7 @@ public class Encryptor implements IConverter {
      * @param m 
      * @param key 
      * @param text
+     * @param savePath
      */
     public Encryptor(int a, int b, int m, long key, ArrayList<String> text, String savePath) {
         _a = a;
@@ -110,10 +112,18 @@ public class Encryptor implements IConverter {
         return _result.toString();
     }
     
+    /**
+     * returns the converted result
+     * @return
+     */
     public ArrayList<byte[]> getResult(){
         return _result;
     }    
     
+    /**
+     *
+     * @return
+     */
     public File getFile(){
         return _file;
     }
