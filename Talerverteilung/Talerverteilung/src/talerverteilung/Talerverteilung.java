@@ -17,17 +17,14 @@ public class Talerverteilung {
  /*Driver function to check for above function*/
     public static void main (String[] args)
     {
-        
-        Eingabe eingabe = new Eingabe();
-        
-//        int arr[] = {1, 1, 1, 1, 1, 3, 3, 3, 5, 5};
-//        int n = arr.length;
-//        if (Partition.findPartition(arr, n, 2) == true)
-//            System.out.println("Can be divided into two " +
-//                               "subsets of equal sum");
-//        else
-//            System.out.println("Can not be divided into" +
-//                            " two subsets of equal sum");
+        int arr[] = {1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 7, 7, 7, 8, 9, 9, 10, 10, 10};
+        int n = arr.length;
+        if (Partition.findPartition(arr, n, 12) == true)
+            System.out.println("Can be divided into two " +
+                               "subsets of equal sum");
+        else
+            System.out.println("Can not be divided into" +
+                            " " + n + " subsets of equal sum");
  
     }
     
