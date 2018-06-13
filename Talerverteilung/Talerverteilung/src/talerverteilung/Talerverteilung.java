@@ -18,7 +18,7 @@ public class Talerverteilung {
     public static void main (String[] args)
     {
         
-        Eingabe eingabe = new Eingabe();
+        Terminal terminal = new Terminal();
         
 //        int arr[] = {1, 1, 1, 1, 1, 3, 3, 3, 5, 5};
 //        int n = arr.length;
