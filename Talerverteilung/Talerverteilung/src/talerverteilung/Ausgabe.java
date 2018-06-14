@@ -3,18 +3,19 @@ package talerverteilung;
 import java.util.ArrayList;
 /**
  *
- * @author all
+ * @author funbold
  */
 public class Ausgabe {
     
     /**
-     *
+     * Konstruktor
      */
     public Ausgabe(){
         
     }  
     
     /**
+     * Gibt das Ergebnis aus.
      *
      * @param werte
      */

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Eingabe nimmt alle Werte entgegen.
+ * 
  * @author funbold
  */
 public class Eingabe {
@@ -13,14 +14,15 @@ public class Eingabe {
     private int anz;
     
     /**
-     *
+     * Konstruktor
      */
     public Eingabe(){
     
 }
 
     /**
-     *
+     * run() ist die Hauptfunktion der Eingabe und führt alle anderen Funktionen aus.
+     * 
      * @return
      */
     public Dispatcher run(){
