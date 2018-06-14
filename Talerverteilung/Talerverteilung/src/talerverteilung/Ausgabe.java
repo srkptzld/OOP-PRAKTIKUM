@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class Ausgabe {
     
     /**
-     *
+     * Konstruktor
      */
     public Ausgabe(){
         
     }  
     
     /**
+     * Gibt das Ergebnis aus.
      *
      * @param werte
      */

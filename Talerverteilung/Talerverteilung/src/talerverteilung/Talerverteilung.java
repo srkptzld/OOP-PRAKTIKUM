@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sirkpetzold
+ * @author funbold
  */
 public class Talerverteilung {
 

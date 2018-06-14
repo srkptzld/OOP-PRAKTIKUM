@@ -24,7 +24,7 @@ public class Terminal {
     public Dispatcher disp;
     
     /**
-     *
+     * Konstruktor
      */
     public Terminal(){
 
@@ -35,7 +35,8 @@ public class Terminal {
     }
     
     /**
-     *
+     * Methode für Ergbenis, falls es keins gibt
+     * 
      * @param menge
      */
     public void printResult(ArrayList<NumSet> menge, boolean isDispatchable)
