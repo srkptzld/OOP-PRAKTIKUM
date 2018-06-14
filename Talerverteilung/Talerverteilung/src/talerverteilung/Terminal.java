@@ -37,7 +37,8 @@ public class Terminal {
     /**
      * Methode für Ergbenis, falls es keins gibt
      * 
-     * @param menge
+     * @param menge Menge
+     * @param isDispatchable Ist teilbar oder nicht
      */
     public void printResult(ArrayList<NumSet> menge, boolean isDispatchable)
     {

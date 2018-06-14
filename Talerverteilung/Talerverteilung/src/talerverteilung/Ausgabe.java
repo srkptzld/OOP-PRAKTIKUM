@@ -2,7 +2,7 @@ package talerverteilung;
 
 import java.util.ArrayList;
 /**
- *
+ * Ausgabe
  * @author funbold
  */
 public class Ausgabe {
@@ -18,6 +18,7 @@ public class Ausgabe {
      * Gibt das Ergebnis aus.
      *
      * @param werte
+     * @param isDispatchable Ist teilbar oder nicht
      */
     public void print(ArrayList<NumSet> werte, boolean isDispatchable){
         if (isDispatchable)
