@@ -14,9 +14,16 @@ public class Eingabe {
     
 public Eingabe(){
     
+}
+
+public Dispatcher run(){
+    
     werte = getWerte();
     menge = getMenge();
     
+    Dispatcher disp = new Dispatcher(werte, menge);
+    
+    return disp;
 }
     
 private ArrayList<Integer> getWerte(){
