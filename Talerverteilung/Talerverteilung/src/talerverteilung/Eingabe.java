@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Eingabe {
     
-    private Menge menge;
+    private NumSet menge;
     private int anz;
     
     /**
@@ -36,10 +36,10 @@ public class Eingabe {
     return disp;
 }
     
-private Menge getWerte(){
+private NumSet getWerte(){
     
     
-    Menge menge = new Menge();
+    NumSet menge = new NumSet();
     String eingabe;
     Scanner scan = new Scanner(System.in);
     boolean scanning = true;
@@ -47,7 +47,7 @@ private Menge getWerte(){
     while(scanning){
     
         System.out.println("Bitte geben sie 'new' ein, um eine bestimmte Menge an neuen Talern hinzuzufuegen.");
-        System.out.println("Oder geben sie 1,..,4 für Beispiel 1-4 ein.");
+        System.out.println("Oder geben sie 1,..,5 für Beispiel 1-5 ein.");
         
 
         eingabe = scan.nextLine();
@@ -61,8 +61,10 @@ private Menge getWerte(){
                 return getExample3();
             case "4":
                 return getExample4();
+            case "5":
+                return getExample5();
             case "new":
-                menge.addList(getEinzelwerte());
+                menge.addCoinList(getEinzelwerte());
                 break;
             default:
                 System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
@@ -134,51 +136,67 @@ private int getMenge(){
 }
 
 
-private Menge getExample1() {
-    Menge menge = new Menge();
+private NumSet getExample1() {
+    NumSet menge = new NumSet();
     
-    menge.addTaler(1, 5);
-    menge.addTaler(3, 3);
-    menge.addTaler(5, 2);
+    menge.addCoin(1, 5);
+    menge.addCoin(3, 3);
+    menge.addCoin(5, 2);
 
     return menge;
 }
     
 
-private Menge getExample2() {
-    Menge menge = new Menge();
+private NumSet getExample2() {
+    NumSet menge = new NumSet();
     
-    menge.addTaler(1, 1);
-    menge.addTaler(3, 3);
-    menge.addTaler(10, 2);
+    menge.addCoin(1, 1);
+    menge.addCoin(3, 3);
+    menge.addCoin(10, 2);
 
     return menge;
 }
     
 
-private Menge getExample3() {
-    Menge menge = new Menge();
+private NumSet getExample3() {
+    NumSet menge = new NumSet();
     
-    menge.addTaler(1);
-    menge.addTaler(2, 3);
-    menge.addTaler(3, 3);
-    menge.addTaler(4, 5);
-    menge.addTaler(5, 5);
-    menge.addTaler(6);
-    menge.addTaler(7, 3);
-    menge.addTaler(8);
-    menge.addTaler(9, 2);
-    menge.addTaler(10, 3);
+    menge.addCoin(1);
+    menge.addCoin(2, 3);
+    menge.addCoin(3, 3);
+    menge.addCoin(4, 5);
+    menge.addCoin(5, 5);
+    menge.addCoin(6);
+    menge.addCoin(7, 3);
+    menge.addCoin(8);
+    menge.addCoin(9, 2);
+    menge.addCoin(10, 3);
 
     return menge;
 }
 
-private Menge getExample4() {
-    Menge menge = new Menge();
+private NumSet getExample4() {
+    NumSet menge = new NumSet();
     
-    menge.addTaler(3, 10);
-    menge.addTaler(7, 2);
-    menge.addTaler(10, 10);
+    menge.addCoin(1);
+    menge.addCoin(2, 3);
+    menge.addCoin(3, 5);
+    menge.addCoin(4, 5);
+    menge.addCoin(5, 5);
+    menge.addCoin(7, 3);
+    menge.addCoin(8);
+    menge.addCoin(9, 2);
+    menge.addCoin(10, 3);
+
+    return menge;
+}
+
+private NumSet getExample5() {
+    NumSet menge = new NumSet();
+    
+    menge.addCoin(3, 10);
+    menge.addCoin(7, 2);
+    menge.addCoin(10, 10);
 
     return menge;
 }

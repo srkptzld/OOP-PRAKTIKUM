@@ -16,7 +16,7 @@ public class Talerverteilung {
         
         Terminal terminal = new Terminal();
         
-        ArrayList<Menge> result = new ArrayList<>();
+        ArrayList<NumSet> result = new ArrayList<>();
         boolean isDispatchableInKSubSets = terminal.disp.Run(result);
         
         if (isDispatchableInKSubSets)
