@@ -1,20 +1,46 @@
 package talerverteilung;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author all
+ * @author funbold
  */
 public class Terminal {
     
-    Eingabe in;
-    Ausgabe out;
-    Dispatcher disp;
+    /**
+     *
+     */
+    public Eingabe in;
+
+    /**
+     *
+     */
+    public Ausgabe out;
+
+    /**
+     *
+     */
+    public Dispatcher disp;
     
+    /**
+     *
+     */
     public Terminal(){
 
-        Eingabe eingabe = new Eingabe();
+        in = new Eingabe();
+        out = new Ausgabe();
         disp = in.run();
 
+    }
+    
+    /**
+     *
+     * @param menge
+     */
+    public void printResult(ArrayList<Menge> menge)
+    {
+      out.print(menge);
     }
     
 }

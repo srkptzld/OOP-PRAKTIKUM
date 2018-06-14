@@ -9,27 +9,35 @@ import java.util.Scanner;
  */
 public class Eingabe {
     
-    private ArrayList<Integer> werte;
-    private int menge;
+    private Menge menge;
+    private int anz;
     
-public Eingabe(){
+    /**
+     *
+     */
+    public Eingabe(){
     
 }
 
-public Dispatcher run(){
+    /**
+     *
+     * @return
+     */
+    public Dispatcher run(){
     
-    werte = getWerte();
-    menge = getMenge();
+    menge = getWerte();
+    anz = getMenge();
+    System.out.println("----------------------------------------------");
     
-    Dispatcher disp = new Dispatcher(werte, menge);
+    Dispatcher disp = new Dispatcher(menge, anz);
     
     return disp;
 }
     
-private ArrayList<Integer> getWerte(){
+private Menge getWerte(){
     
-    ArrayList<Integer> werte = new ArrayList<Integer>();
-    ArrayList<Integer> einzelwerte = new ArrayList<Integer>();
+    
+    Menge menge = new Menge();
     String eingabe;
     Scanner scan = new Scanner(System.in);
     boolean scanning = true;
@@ -37,79 +45,62 @@ private ArrayList<Integer> getWerte(){
     while(scanning){
     
         System.out.println("Bitte geben sie 'new' ein, um eine bestimmte Menge an neuen Talern hinzuzufuegen.");
-        System.out.println("Wenn die Talermenge ihren Erwartungen entspricht, geben sie 'stop' ein");
+        System.out.println("Oder geben sie 1,..,4 für Beispiel 1-4 ein.");
+        
 
         eingabe = scan.nextLine();
         
-        if(eingabe.equals("new")){
-            einzelwerte = getEinzelwerte();            
-            for(int i = 0; i < einzelwerte.size(); i++){
-                werte.add(einzelwerte.get(i));
-            }           
-        }else if(eingabe.equals("stop")){
-            System.out.println("Taler-Grundmenge initialisiert.");
-            scanning = false;
-        }else{
-            System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
-        }        
+        switch (eingabe) {
+            case "1":
+                return getExample1();
+            case "2":
+                return getExample2();
+            case "3":
+                return getExample3();
+            case "4":
+                return getExample4();
+            case "new":
+                menge.addList(getEinzelwerte());
+                break;
+            default:
+                System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
+        }
+                
         
     }   
-    return werte;   
+    return menge;   
 }
 
 private ArrayList<Integer> getEinzelwerte(){
-    
-    ArrayList<Integer> einzelwerte = new ArrayList<Integer>();
+    ArrayList<Integer> values = new ArrayList<>();
+    Scanner s = new Scanner(System.in);
+    boolean scanning = true;
+    String eingabe = "";
     int wert = 0;
-    int menge = 0;
-    boolean scanningWert = true;
-    boolean scanningMenge = true;
-    String eingabe;
-    Scanner scan = new Scanner(System.in);
     
-    while(scanningWert){
-    
-        System.out.println("Bitte geben sie einen Talerwert als Zahl ein.");
-
-        eingabe = scan.nextLine();
+    System.out.println("Bitte geben Sie einen Talerwert ein und bestätigen Sie mit <Enter>");
+    System.out.println("Wenn die Talermenge ihren Erwartungen entspricht, geben sie 'stop' ein");
+    while(scanning){    
+         
+        eingabe = s.nextLine(); 
         
-        try{
-            if(Integer.parseInt(eingabe) > 0){
-                wert = Integer.parseInt(eingabe);
-                scanningWert = false;
-            }else{
-               System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut."); 
-            }
-        }catch(NumberFormatException e){
-            System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
+        if(eingabe.equals("stop")){
+            System.out.println("Taler-Grundmenge initialisiert.");
+            scanning = false;
         }
-        
-    }   
-    
-    while(scanningMenge){
-        
-        System.out.println("Bitte geben sie einen Mengenwert als Zahl an.");
+        if (scanning)
+            try{ 
+                if(Integer.parseInt(eingabe) > 0) 
+                    wert = Integer.parseInt(eingabe); 
+                else 
+                   System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");  
 
-        eingabe = scan.nextLine();
-        
-        try{
-            if(Integer.parseInt(eingabe) > 0){
-                menge = Integer.parseInt(eingabe);
-                scanningMenge = false;
-            }else{
-               System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut."); 
-            }
-        }catch(NumberFormatException e){
-            System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
-        }
-        
+            }catch(NumberFormatException e){ 
+                System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut."); 
+            } 
     }
     
-    for(int i = 0; i < menge; i++){
-        einzelwerte.add(wert);
-    }
-    
-    return einzelwerte; 
+    return values;
 }
 
 private int getMenge(){
@@ -137,6 +128,56 @@ private int getMenge(){
         }
         
     }    
+    return menge;
+}
+
+
+private Menge getExample1() {
+    Menge menge = new Menge();
+    
+    menge.addTaler(1, 5);
+    menge.addTaler(3, 3);
+    menge.addTaler(5, 2);
+
+    return menge;
+}
+    
+
+private Menge getExample2() {
+    Menge menge = new Menge();
+    
+    menge.addTaler(1, 1);
+    menge.addTaler(3, 3);
+    menge.addTaler(10, 2);
+
+    return menge;
+}
+    
+
+private Menge getExample3() {
+    Menge menge = new Menge();
+    
+    menge.addTaler(1);
+    menge.addTaler(2, 3);
+    menge.addTaler(3, 3);
+    menge.addTaler(4, 5);
+    menge.addTaler(5, 5);
+    menge.addTaler(6);
+    menge.addTaler(7, 3);
+    menge.addTaler(8);
+    menge.addTaler(9, 2);
+    menge.addTaler(10, 3);
+
+    return menge;
+}
+
+private Menge getExample4() {
+    Menge menge = new Menge();
+    
+    menge.addTaler(3, 10);
+    menge.addTaler(7, 2);
+    menge.addTaler(10, 10);
+
     return menge;
 }
     
