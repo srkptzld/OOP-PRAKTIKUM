@@ -38,9 +38,9 @@ public class Terminal {
      *
      * @param menge
      */
-    public void printResult(ArrayList<NumSet> menge)
+    public void printResult(ArrayList<NumSet> menge, boolean isDispatchable)
     {
-      out.print(menge);
+      out.print(menge, isDispatchable);
     }
     
 }

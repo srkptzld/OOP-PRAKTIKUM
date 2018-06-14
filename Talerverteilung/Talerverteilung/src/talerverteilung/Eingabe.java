@@ -9,15 +9,16 @@ import java.util.Scanner;
  */
 public class Eingabe {
     
-    private NumSet menge;
+    private NumSet _set;
     private int anz;
     
     /**
      *
      */
     public Eingabe(){
+        _set = new NumSet();
     
-}
+    }
 
     /**
      *
@@ -25,26 +26,24 @@ public class Eingabe {
      */
     public Dispatcher run(){
     
-    menge = getWerte();
+    getWerte();
     anz = getMenge();
     System.out.println("----------------------------------------------");
     
-    Dispatcher disp = new Dispatcher(menge, anz);
+    Dispatcher disp = new Dispatcher(_set, anz);
     
     return disp;
 }
     
-private NumSet getWerte(){
+private void getWerte(){
     
-    
-    NumSet menge = new NumSet();
     String eingabe;
     Scanner scan = new Scanner(System.in);
     boolean scanning = true;
     
     while(scanning){
     
-        System.out.println("Bitte geben sie 'new' ein, um eine bestimmte Menge an neuen Talern hinzuzufuegen.");
+        System.out.println("Bitte geben sie 'new' ein, um eine bestimmte Menge an neuen Talern hinzufuegen.");
         System.out.println("Oder geben sie 1,..,5 für Beispiel 1-5 ein.");
         
 
@@ -52,25 +51,27 @@ private NumSet getWerte(){
         
         switch (eingabe) {
             case "1":
-                return getExample1();
+                _set = getExample1();
+                return;
             case "2":
-                return getExample2();
+                _set = getExample2();
+                return;
             case "3":
-                return getExample3();
+                _set = getExample3();
+                return;
             case "4":
-                return getExample4();
+                _set = getExample4();
+                return;
             case "5":
-                return getExample5();
+                _set = getExample5();
+                return;
             case "new":
-                menge.addCoinList(getEinzelwerte());
-                break;
+                _set.addCoinList(getEinzelwerte());
+                return;
             default:
                 System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");
         }
-                
-        
     }   
-    return menge;   
 }
 
 private ArrayList<Integer> getEinzelwerte(){
@@ -78,7 +79,6 @@ private ArrayList<Integer> getEinzelwerte(){
     Scanner s = new Scanner(System.in);
     boolean scanning = true;
     String eingabe = "";
-    int wert = 0;
     
     System.out.println("Bitte geben Sie einen Talerwert ein und bestätigen Sie mit <Enter>");
     System.out.println("Wenn die Talermenge ihren Erwartungen entspricht, geben sie 'stop' ein");
@@ -93,7 +93,7 @@ private ArrayList<Integer> getEinzelwerte(){
         if (scanning)
             try{ 
                 if(Integer.parseInt(eingabe) > 0) 
-                    wert = Integer.parseInt(eingabe); 
+                    values.add(Integer.parseInt(eingabe)); 
                 else 
                    System.out.println("Die Eingabe war fehlerhaft. Versuchen sie es erneut.");  
 

@@ -36,6 +36,10 @@ public class NumSet {
             addCoin(a);       
     }
     
+    /**
+     *
+     * @param set
+     */
     public void addCoinList(ArrayList<Integer> set){
         _coinSet.addAll(set);
     }

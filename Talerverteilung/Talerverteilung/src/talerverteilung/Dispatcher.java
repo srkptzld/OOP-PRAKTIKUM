@@ -38,8 +38,7 @@ private int _count;
             result = new ArrayList<>();
         
          for (int i = 0; i < _count; i++) 
-            result.add(new NumSet());
-        
+            result.add(new NumSet());       
          
         boolean isDispatchableInKSubSets = canPartitionKSubsets(a, _count, result);
         return isDispatchableInKSubSets;
