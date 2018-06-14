@@ -38,7 +38,7 @@ public class Terminal {
      *
      * @param menge
      */
-    public void printResult(ArrayList<Menge> menge)
+    public void printResult(ArrayList<NumSet> menge)
     {
       out.print(menge);
     }
